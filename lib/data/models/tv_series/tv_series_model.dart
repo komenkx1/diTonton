@@ -1,4 +1,4 @@
-import 'package:ditonton/domain/entities/tv_series.dart';
+import 'package:ditonton/domain/entities/tv_series/tv_series.dart';
 
 class TvSeriesModel {
   TvSeriesModel({

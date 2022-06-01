@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:ditonton/data/models/tv_series_model.dart';
+import 'package:ditonton/data/models/tv_series/tv_series_model.dart';
 
 TvSeriesResponse tvSeriesResponseFromJson(String str) =>
     TvSeriesResponse.fromJson(json.decode(str));
