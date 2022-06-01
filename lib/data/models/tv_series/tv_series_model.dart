@@ -18,7 +18,7 @@ class TvSeriesModel {
   });
 
   final String? backdropPath;
-  final DateTime? firstAirDate;
+  final String? firstAirDate;
   final List<int>? genreIds;
   final int? id;
   final String? name;
@@ -33,7 +33,7 @@ class TvSeriesModel {
 
   factory TvSeriesModel.fromJson(Map<String, dynamic> json) => TvSeriesModel(
         backdropPath: json["backdrop_path"] ?? null,
-        firstAirDate: DateTime.parse(json["first_air_date"]),
+        firstAirDate: json["first_air_date"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
         name: json["name"],
@@ -49,8 +49,7 @@ class TvSeriesModel {
 
   Map<String, dynamic> toJson() => {
         "backdrop_path": backdropPath,
-        "first_air_date":
-            "${firstAirDate?.year.toString().padLeft(4, '0')}-${firstAirDate?.month.toString().padLeft(2, '0')}-${firstAirDate?.day.toString().padLeft(2, '0')}",
+        "first_air_date": firstAirDate,
         "genre_ids": List<dynamic>.from(genreIds!.map((x) => x)),
         "id": id,
         "name": name,
