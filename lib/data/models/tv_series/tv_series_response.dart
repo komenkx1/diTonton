@@ -30,8 +30,7 @@ class TvSeriesResponse {
         page: json["page"],
         results: List<TvSeriesModel>.from((json["results"] as List)
             .map((x) => TvSeriesModel.fromJson(x))
-            .where((element) =>
-                element.posterPath != null && element.backdropPath != null)),
+            .where((element) => element.overview != "")),
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
