@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/movie/movie.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:flutter/material.dart';
 
-class MovieCard extends StatelessWidget {
-  final Movie movie;
+class CardList extends StatelessWidget {
+  final dataList;
+  final bool isTvSeries;
 
-  MovieCard(this.movie);
+  CardList({this.dataList, this.isTvSeries = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MovieCard extends StatelessWidget {
           Navigator.pushNamed(
             context,
             MovieDetailPage.ROUTE_NAME,
-            arguments: movie.id,
+            arguments: dataList.id,
           );
         },
         child: Stack(
@@ -35,14 +35,14 @@ class MovieCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      movie.title ?? '-',
+                      isTvSeries ? dataList.name : dataList.title ?? '-',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: kHeading6,
                     ),
                     SizedBox(height: 16),
                     Text(
-                      movie.overview ?? '-',
+                      dataList.overview ?? '-',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -57,7 +57,7 @@ class MovieCard extends StatelessWidget {
               ),
               child: ClipRRect(
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
+                  imageUrl: '$BASE_IMAGE_URL${dataList.posterPath}',
                   width: 80,
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
