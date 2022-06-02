@@ -5,11 +5,11 @@ import 'package:ditonton/domain/usecases/movie/search_movies.dart';
 import 'package:ditonton/domain/usecases/tv_series/search_tv_series.dart';
 import 'package:flutter/foundation.dart';
 
-class MovieSearchNotifier extends ChangeNotifier {
+class SearchNotifier extends ChangeNotifier {
   final SearchMovies searchMovies;
   final SearchTvSeries? searchTvSeries;
 
-  MovieSearchNotifier({required this.searchMovies, this.searchTvSeries});
+  SearchNotifier({required this.searchMovies, this.searchTvSeries});
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;

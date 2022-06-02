@@ -65,7 +65,10 @@ class CardList extends StatelessWidget {
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => Image.asset(
+                    'assets/no_image.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),

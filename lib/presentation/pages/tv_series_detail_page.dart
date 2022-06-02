@@ -26,8 +26,8 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
     Future.microtask(() {
       Provider.of<TvSeriesDetailNotifier>(context, listen: false)
           .fetchTvSeriesDetail(widget.id);
-      // Provider.of<TvSeriesDetailNotifier>(context, listen: false)
-      //     .loadWatchlistStatus(widget.id);
+      Provider.of<TvSeriesDetailNotifier>(context, listen: false)
+          .loadWatchlistStatus(widget.id);
     });
   }
 
@@ -107,17 +107,17 @@ class DetailContent extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () async {
-                                // if (!isAddedWatchlist) {
-                                //   await Provider.of<TvSeriesDetailNotifier>(
-                                //           context,
-                                //           listen: false)
-                                //       .addWatchlist(tvSeries);
-                                // } else {
-                                //   await Provider.of<TvSeriesDetailNotifier>(
-                                //           context,
-                                //           listen: false)
-                                //       .removeFromWatchlist(tvSeries);
-                                // }
+                                if (!isAddedWatchlist) {
+                                  await Provider.of<TvSeriesDetailNotifier>(
+                                          context,
+                                          listen: false)
+                                      .addWatchlist(tvSeries);
+                                } else {
+                                  await Provider.of<TvSeriesDetailNotifier>(
+                                          context,
+                                          listen: false)
+                                      .removeFromWatchlist(tvSeries);
+                                }
 
                                 final message =
                                     Provider.of<TvSeriesDetailNotifier>(context,
@@ -213,19 +213,31 @@ class DetailContent extends StatelessWidget {
                                                   Radius.circular(8),
                                                 ),
                                                 child: CachedNetworkImage(
-                                                  height: 100,
-                                                  fit: BoxFit.cover,
-                                                  imageUrl:
-                                                      'https://image.tmdb.org/t/p/w500${tvSeriesData.posterPath}',
-                                                  placeholder: (context, url) =>
-                                                      Center(
-                                                    child:
-                                                        CircularProgressIndicator(),
-                                                  ),
-                                                  errorWidget:
-                                                      (context, url, error) =>
-                                                          Icon(Icons.error),
-                                                ),
+                                                    height: 100,
+                                                    fit: BoxFit.cover,
+                                                    imageUrl:
+                                                        'https://image.tmdb.org/t/p/w500${tvSeriesData.posterPath}',
+                                                    placeholder:
+                                                        (context, url) =>
+                                                            Center(
+                                                              child:
+                                                                  CircularProgressIndicator(),
+                                                            ),
+                                                    errorWidget: (context, url,
+                                                            error) =>
+                                                        Container(
+                                                          color: Colors.white,
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Image.asset(
+                                                              'assets/no_image_1.png',
+                                                              fit: BoxFit.cover,
+                                                              width: 60,
+                                                            ),
+                                                          ),
+                                                        )),
                                               ),
                                             ),
                                             Text(tvSeriesData.name),
@@ -278,17 +290,28 @@ class DetailContent extends StatelessWidget {
                                                 Radius.circular(8),
                                               ),
                                               child: CachedNetworkImage(
-                                                imageUrl:
-                                                    'https://image.tmdb.org/t/p/w500${tvSeries.posterPath}',
-                                                placeholder: (context, url) =>
-                                                    Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                ),
-                                                errorWidget:
-                                                    (context, url, error) =>
-                                                        Icon(Icons.error),
-                                              ),
+                                                  imageUrl:
+                                                      'https://image.tmdb.org/t/p/w500${tvSeries.posterPath}',
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                        child:
+                                                            CircularProgressIndicator(),
+                                                      ),
+                                                  errorWidget: (context, url,
+                                                          error) =>
+                                                      Container(
+                                                        color: Colors.white,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Image.asset(
+                                                            'assets/no_image_1.png',
+                                                            fit: BoxFit.cover,
+                                                            width: 60,
+                                                          ),
+                                                        ),
+                                                      )),
                                             ),
                                           ),
                                         );

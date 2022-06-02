@@ -1,12 +1,11 @@
-import 'package:ditonton/domain/entities/movie/movie_detail.dart';
 import 'package:ditonton/domain/entities/tv_series/tv_series.dart';
 import 'package:ditonton/domain/entities/tv_series/tv_series_detail.dart';
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/usecases/movie/get_watchlist_status.dart';
-import 'package:ditonton/domain/usecases/movie/remove_watchlist.dart';
-import 'package:ditonton/domain/usecases/movie/save_watchlist.dart';
 import 'package:ditonton/domain/usecases/tv_series/get_tv_series_detail.dart';
 import 'package:ditonton/domain/usecases/tv_series/get_tv_series_recommendations.dart';
+import 'package:ditonton/domain/usecases/tv_series/get_watchlist_status.dart';
+import 'package:ditonton/domain/usecases/tv_series/remove_watchlist.dart';
+import 'package:ditonton/domain/usecases/tv_series/save_watchlist.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +15,9 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
 
   final GetTvSeriesDetail getTvSeriesDetail;
   final GetTvSeriesRecommendations getTvSeriesRecommendations;
-  final GetWatchListStatus getWatchListStatus;
-  final SaveWatchlist saveWatchlist;
-  final RemoveWatchlist removeWatchlist;
+  final GetWatchListStatusTvSeries getWatchListStatus;
+  final SaveWatchlistTvSeries saveWatchlist;
+  final RemoveWatchlistTvSeries removeWatchlist;
 
   TvSeriesDetailNotifier({
     required this.getTvSeriesDetail,
@@ -80,8 +79,8 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
   String _watchlistMessage = '';
   String get watchlistMessage => _watchlistMessage;
 
-  Future<void> addWatchlist(MovieDetail movie) async {
-    final result = await saveWatchlist.execute(movie);
+  Future<void> addWatchlist(TvSeriesDetail tvSeries) async {
+    final result = await saveWatchlist.execute(tvSeries);
 
     await result.fold(
       (failure) async {
@@ -92,11 +91,11 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
       },
     );
 
-    await loadWatchlistStatus(movie.id);
+    await loadWatchlistStatus(tvSeries.id);
   }
 
-  Future<void> removeFromWatchlist(MovieDetail movie) async {
-    final result = await removeWatchlist.execute(movie);
+  Future<void> removeFromWatchlist(TvSeriesDetail tvSeries) async {
+    final result = await removeWatchlist.execute(tvSeries);
 
     await result.fold(
       (failure) async {
@@ -107,7 +106,7 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
       },
     );
 
-    await loadWatchlistStatus(movie.id);
+    await loadWatchlistStatus(tvSeries.id);
   }
 
   Future<void> loadWatchlistStatus(int id) async {
