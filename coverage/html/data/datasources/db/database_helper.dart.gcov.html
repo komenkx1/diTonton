@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov.info - data/datasources/db/database_helper.dart</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">data/datasources/db</a> - database_helper.dart<span style="font-size: 80%;"> (source / <a href="database_helper.dart.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-06-03 09:16:25</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : import 'dart:async';</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : import 'package:ditonton/data/models/movie/movie_table.dart';
+<span class="lineNum">       4 </span>            : import 'package:ditonton/data/models/tv_series/tv_series_table.dart';
+<span class="lineNum">       5 </span>            : import 'package:sqflite/sqflite.dart';
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span>            : class DatabaseHelper {
+<span class="lineNum">       8 </span>            :   static DatabaseHelper? _databaseHelper;
+<span class="lineNum">       9 </span><span class="lineNoCov">          0 :   DatabaseHelper._instance() {</span>
+<span class="lineNum">      10 </span>            :     _databaseHelper = this;
+<span class="lineNum">      11 </span>            :   }
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 :   factory DatabaseHelper() =&gt; _databaseHelper ?? DatabaseHelper._instance();</span>
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            :   static Database? _database;
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 :   Future&lt;Database?&gt; get database async {</span>
+<span class="lineNum">      18 </span>            :     if (_database == null) {
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 :       _database = await _initDb();</span>
+<span class="lineNum">      20 </span>            :     }
+<span class="lineNum">      21 </span>            :     return _database;
+<span class="lineNum">      22 </span>            :   }
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            :   static const String _tblWatchlist = 'watchlist';
+<span class="lineNum">      25 </span>            :   static const String _tblTvSeriesWatchlist = 'tvserieswatchlist';
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :   Future&lt;Database&gt; _initDb() async {</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     final path = await getDatabasesPath();</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     final databasePath = '$path/ditonton.db';</span>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     var db = await openDatabase(databasePath, version: 2, onCreate: _onCreate);</span>
+<span class="lineNum">      32 </span>            :     return db;
+<span class="lineNum">      33 </span>            :   }
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :   void _onCreate(Database db, int version) async {</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     await db.execute('''</span>
+<span class="lineNum">      37 </span>            :       CREATE TABLE  $_tblWatchlist (
+<span class="lineNum">      38 </span>            :         id INTEGER PRIMARY KEY,
+<span class="lineNum">      39 </span>            :         title TEXT,
+<span class="lineNum">      40 </span>            :         overview TEXT,
+<span class="lineNum">      41 </span>            :         posterPath TEXT
+<span class="lineNum">      42 </span>            :       );
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     ''');</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     await db.execute('''</span>
+<span class="lineNum">      45 </span>            :       CREATE TABLE  $_tblTvSeriesWatchlist (
+<span class="lineNum">      46 </span>            :         id INTEGER PRIMARY KEY,
+<span class="lineNum">      47 </span>            :         name TEXT,
+<span class="lineNum">      48 </span>            :         overview TEXT,
+<span class="lineNum">      49 </span>            :         posterPath TEXT
+<span class="lineNum">      50 </span>            :       );
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     ''');</span>
+<span class="lineNum">      52 </span>            :   }
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :   Future&lt;int&gt; insertWatchlist(MovieTable movie) async {</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     final db = await database;</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     return await db!.insert(_tblWatchlist, movie.toJson());</span>
+<span class="lineNum">      57 </span>            :   }
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :   Future&lt;int&gt; removeWatchlist(MovieTable movie) async {</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     final db = await database;</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     return await db!.delete(</span>
+<span class="lineNum">      62 </span>            :       _tblWatchlist,
+<span class="lineNum">      63 </span>            :       where: 'id = ?',
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :       whereArgs: [movie.id],</span>
+<span class="lineNum">      65 </span>            :     );
+<span class="lineNum">      66 </span>            :   }
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :   Future&lt;Map&lt;String, dynamic&gt;?&gt; getMovieById(int id) async {</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :     final db = await database;</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     final results = await db!.query(</span>
+<span class="lineNum">      71 </span>            :       _tblWatchlist,
+<span class="lineNum">      72 </span>            :       where: 'id = ?',
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :       whereArgs: [id],</span>
+<span class="lineNum">      74 </span>            :     );
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     if (results.isNotEmpty) {</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :       return results.first;</span>
+<span class="lineNum">      78 </span>            :     } else {
+<span class="lineNum">      79 </span>            :       return null;
+<span class="lineNum">      80 </span>            :     }
+<span class="lineNum">      81 </span>            :   }
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :   Future&lt;List&lt;Map&lt;String, dynamic&gt;&gt;&gt; getWatchlistMovies() async {</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     final db = await database;</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     final List&lt;Map&lt;String, dynamic&gt;&gt; results = await db!.query(_tblWatchlist);</span>
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            :     return results;
+<span class="lineNum">      88 </span>            :   }
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :   Future&lt;int&gt; insertTvSeriesWatchlist(TvSeriesTable tvSeries) async {</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :     final db = await database;</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     return await db!.insert(_tblTvSeriesWatchlist, tvSeries.toJson());</span>
+<span class="lineNum">      93 </span>            :   }
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :   Future&lt;int&gt; removeTvSeriesWatchlist(TvSeriesTable tvSeries) async {</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     final db = await database;</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     return await db!.delete(</span>
+<span class="lineNum">      98 </span>            :       _tblTvSeriesWatchlist,
+<span class="lineNum">      99 </span>            :       where: 'id = ?',
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :       whereArgs: [tvSeries.id],</span>
+<span class="lineNum">     101 </span>            :     );
+<span class="lineNum">     102 </span>            :   }
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :   Future&lt;Map&lt;String, dynamic&gt;?&gt; getTVSeriesById(int id) async {</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     final db = await database;</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     final results = await db!.query(</span>
+<span class="lineNum">     107 </span>            :       _tblTvSeriesWatchlist,
+<span class="lineNum">     108 </span>            :       where: 'id = ?',
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :       whereArgs: [id],</span>
+<span class="lineNum">     110 </span>            :     );
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     if (results.isNotEmpty) {</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :       return results.first;</span>
+<span class="lineNum">     114 </span>            :     } else {
+<span class="lineNum">     115 </span>            :       return null;
+<span class="lineNum">     116 </span>            :     }
+<span class="lineNum">     117 </span>            :   }
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :   Future&lt;List&lt;Map&lt;String, dynamic&gt;&gt;&gt; getWatchlistTvSeries() async {</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     final db = await database;</span>
+<span class="lineNum">     121 </span>            :     final List&lt;Map&lt;String, dynamic&gt;&gt; results =
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :         await db!.query(_tblTvSeriesWatchlist);</span>
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            :     return results;
+<span class="lineNum">     125 </span>            :   }
+<span class="lineNum">     126 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

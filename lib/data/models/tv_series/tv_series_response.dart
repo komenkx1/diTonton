@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:ditonton/data/models/tv_series/tv_series_model.dart';
+import 'package:equatable/equatable.dart';
 
 TvSeriesResponse tvSeriesResponseFromJson(String str) =>
     TvSeriesResponse.fromJson(json.decode(str));
@@ -12,7 +13,7 @@ TvSeriesResponse tvSeriesResponseFromJson(String str) =>
 String tvSeriesResponseToJson(TvSeriesResponse data) =>
     json.encode(data.toJson());
 
-class TvSeriesResponse {
+class TvSeriesResponse extends Equatable {
   TvSeriesResponse({
     required this.page,
     required this.results,
@@ -30,7 +31,7 @@ class TvSeriesResponse {
         page: json["page"],
         results: List<TvSeriesModel>.from((json["results"] as List)
             .map((x) => TvSeriesModel.fromJson(x))
-            .where((element) => element.overview != "")),
+            .where((element) => element.posterPath != null)),
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
@@ -41,4 +42,7 @@ class TvSeriesResponse {
         "total_pages": totalPages,
         "total_results": totalResults,
       };
+
+  @override
+  List<Object?> get props => [results];
 }

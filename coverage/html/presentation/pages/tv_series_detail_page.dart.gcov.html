@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov.info - presentation/pages/tv_series_detail_page.dart</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">presentation/pages</a> - tv_series_detail_page.dart<span style="font-size: 80%;"> (source / <a href="tv_series_detail_page.dart.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">130</td>
+            <td class="headerCovTableEntry">174</td>
+            <td class="headerCovTableEntryLo">74.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-06-03 09:16:25</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : import 'package:cached_network_image/cached_network_image.dart';</a>
+<span class="lineNum">       2 </span>            : import 'package:ditonton/common/constants.dart';
+<span class="lineNum">       3 </span>            : import 'package:ditonton/domain/entities/genre.dart';
+<span class="lineNum">       4 </span>            : import 'package:ditonton/domain/entities/tv_series/tv_series.dart';
+<span class="lineNum">       5 </span>            : import 'package:ditonton/domain/entities/tv_series/tv_series_detail.dart';
+<span class="lineNum">       6 </span>            : import 'package:ditonton/common/state_enum.dart';
+<span class="lineNum">       7 </span>            : import 'package:ditonton/presentation/provider/tv_series/tv_series_detail_notifier.dart';
+<span class="lineNum">       8 </span>            : import 'package:flutter/material.dart';
+<span class="lineNum">       9 </span>            : import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+<span class="lineNum">      10 </span>            : import 'package:provider/provider.dart';
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : class TvSeriesDetailPage extends StatefulWidget {
+<span class="lineNum">      13 </span>            :   static const ROUTE_NAME = '/detail-tv-series';
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            :   final int id;
+<span class="lineNum">      16 </span><span class="lineCov">          1 :   TvSeriesDetailPage({required this.id});</span>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span><span class="lineCov">          1 :   @override</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :   _TvSeriesDetailPageState createState() =&gt; _TvSeriesDetailPageState();</span>
+<span class="lineNum">      20 </span>            : }
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : class _TvSeriesDetailPageState extends State&lt;TvSeriesDetailPage&gt; {
+<span class="lineNum">      23 </span><span class="lineCov">          1 :   @override</span>
+<span class="lineNum">      24 </span>            :   void initState() {
+<span class="lineNum">      25 </span><span class="lineCov">          1 :     super.initState();</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :     Future.microtask(() {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :       Provider.of&lt;TvSeriesDetailNotifier&gt;(context, listen: false)</span>
+<span class="lineNum">      28 </span><span class="lineCov">          3 :           .fetchTvSeriesDetail(widget.id);</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :       Provider.of&lt;TvSeriesDetailNotifier&gt;(context, listen: false)</span>
+<span class="lineNum">      30 </span><span class="lineCov">          3 :           .loadWatchlistStatus(widget.id);</span>
+<span class="lineNum">      31 </span>            :     });
+<span class="lineNum">      32 </span>            :   }
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   @override</span>
+<span class="lineNum">      35 </span>            :   Widget build(BuildContext context) {
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     return Scaffold(</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :       body: Consumer&lt;TvSeriesDetailNotifier&gt;(</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :         builder: (context, provider, child) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 :           if (provider.tvSeriesState == RequestState.Loading) {</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :             return Center(</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :               child: CircularProgressIndicator(),</span>
+<span class="lineNum">      42 </span>            :             );
+<span class="lineNum">      43 </span><span class="lineCov">          2 :           } else if (provider.tvSeriesState == RequestState.Loaded) {</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :             final tvSeries = provider.tvSeries;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :             return SafeArea(</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :               child: DetailContent(</span>
+<span class="lineNum">      47 </span>            :                 tvSeries,
+<span class="lineNum">      48 </span><span class="lineCov">          1 :                 provider.tvSeriesRecommendations,</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :                 provider.isAddedToWatchlist,</span>
+<span class="lineNum">      50 </span>            :               ),
+<span class="lineNum">      51 </span>            :             );
+<span class="lineNum">      52 </span>            :           } else {
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :             return Text(provider.message);</span>
+<span class="lineNum">      54 </span>            :           }
+<span class="lineNum">      55 </span>            :         },
+<span class="lineNum">      56 </span>            :       ),
+<span class="lineNum">      57 </span>            :     );
+<span class="lineNum">      58 </span>            :   }
+<span class="lineNum">      59 </span>            : }
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : class DetailContent extends StatelessWidget {
+<span class="lineNum">      62 </span>            :   final TvSeriesDetail tvSeries;
+<span class="lineNum">      63 </span>            :   final List&lt;TvSeries&gt; recommendations;
+<span class="lineNum">      64 </span>            :   final bool isAddedWatchlist;
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   DetailContent(this.tvSeries, this.recommendations, this.isAddedWatchlist);</span>
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   @override</span>
+<span class="lineNum">      69 </span>            :   Widget build(BuildContext context) {
+<span class="lineNum">      70 </span><span class="lineCov">          3 :     final screenWidth = MediaQuery.of(context).size.width;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :     return Stack(</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :       children: [</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :         CachedNetworkImage(</span>
+<span class="lineNum">      74 </span><span class="lineCov">          3 :           imageUrl: 'https://image.tmdb.org/t/p/w500${tvSeries.posterPath}',</span>
+<span class="lineNum">      75 </span>            :           width: screenWidth,
+<span class="lineNum">      76 </span><span class="lineCov">          2 :           placeholder: (context, url) =&gt; Center(</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 :             child: CircularProgressIndicator(),</span>
+<span class="lineNum">      78 </span>            :           ),
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :           errorWidget: (context, url, error) =&gt; Icon(Icons.error),</span>
+<span class="lineNum">      80 </span>            :         ),
+<span class="lineNum">      81 </span><span class="lineCov">          1 :         Container(</span>
+<span class="lineNum">      82 </span>            :           margin: const EdgeInsets.only(top: 48 + 8),
+<span class="lineNum">      83 </span><span class="lineCov">          1 :           child: DraggableScrollableSheet(</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :             builder: (context, scrollController) {</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :               return Container(</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :                 decoration: BoxDecoration(</span>
+<span class="lineNum">      87 </span>            :                   color: kRichBlack,
+<span class="lineNum">      88 </span><span class="lineCov">          2 :                   borderRadius: BorderRadius.vertical(top: Radius.circular(16)),</span>
+<span class="lineNum">      89 </span>            :                 ),
+<span class="lineNum">      90 </span>            :                 padding: const EdgeInsets.only(
+<span class="lineNum">      91 </span>            :                   left: 16,
+<span class="lineNum">      92 </span>            :                   top: 16,
+<span class="lineNum">      93 </span>            :                   right: 16,
+<span class="lineNum">      94 </span>            :                 ),
+<span class="lineNum">      95 </span><span class="lineCov">          1 :                 child: Stack(</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :                   children: [</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :                     Container(</span>
+<span class="lineNum">      98 </span>            :                       margin: const EdgeInsets.only(top: 16),
+<span class="lineNum">      99 </span><span class="lineCov">          1 :                       child: SingleChildScrollView(</span>
+<span class="lineNum">     100 </span>            :                         controller: scrollController,
+<span class="lineNum">     101 </span><span class="lineCov">          1 :                         child: Column(</span>
+<span class="lineNum">     102 </span>            :                           crossAxisAlignment: CrossAxisAlignment.start,
+<span class="lineNum">     103 </span><span class="lineCov">          1 :                           children: [</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :                             Text(</span>
+<span class="lineNum">     105 </span><span class="lineCov">          2 :                               tvSeries.name,</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :                               style: kHeading5,</span>
+<span class="lineNum">     107 </span>            :                             ),
+<span class="lineNum">     108 </span><span class="lineCov">          1 :                             ElevatedButton(</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :                               onPressed: () async {</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :                                 if (!isAddedWatchlist) {</span>
+<span class="lineNum">     111 </span><span class="lineCov">          2 :                                   await Provider.of&lt;TvSeriesDetailNotifier&gt;(</span>
+<span class="lineNum">     112 </span>            :                                           context,
+<span class="lineNum">     113 </span>            :                                           listen: false)
+<span class="lineNum">     114 </span><span class="lineCov">          2 :                                       .addWatchlist(tvSeries);</span>
+<span class="lineNum">     115 </span>            :                                 } else {
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :                                   await Provider.of&lt;TvSeriesDetailNotifier&gt;(</span>
+<span class="lineNum">     117 </span>            :                                           context,
+<span class="lineNum">     118 </span>            :                                           listen: false)
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :                                       .removeFromWatchlist(tvSeries);</span>
+<span class="lineNum">     120 </span>            :                                 }
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            :                                 final message =
+<span class="lineNum">     123 </span><span class="lineCov">          1 :                                     Provider.of&lt;TvSeriesDetailNotifier&gt;(context,</span>
+<span class="lineNum">     124 </span>            :                                             listen: false)
+<span class="lineNum">     125 </span><span class="lineCov">          1 :                                         .watchlistMessage;</span>
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span><span class="lineCov">          1 :                                 if (message ==</span>
+<span class="lineNum">     128 </span>            :                                         TvSeriesDetailNotifier
+<span class="lineNum">     129 </span>            :                                             .watchlistAddSuccessMessage ||
+<span class="lineNum">     130 </span><span class="lineCov">          1 :                                     message ==</span>
+<span class="lineNum">     131 </span>            :                                         TvSeriesDetailNotifier
+<span class="lineNum">     132 </span>            :                                             .watchlistRemoveSuccessMessage) {
+<span class="lineNum">     133 </span><span class="lineCov">          2 :                                   ScaffoldMessenger.of(context).showSnackBar(</span>
+<span class="lineNum">     134 </span><span class="lineCov">          2 :                                       SnackBar(content: Text(message)));</span>
+<span class="lineNum">     135 </span>            :                                 } else {
+<span class="lineNum">     136 </span><span class="lineCov">          1 :                                   showDialog(</span>
+<span class="lineNum">     137 </span>            :                                       context: context,
+<span class="lineNum">     138 </span><span class="lineCov">          1 :                                       builder: (context) {</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :                                         return AlertDialog(</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :                                           content: Text(message),</span>
+<span class="lineNum">     141 </span>            :                                         );
+<span class="lineNum">     142 </span>            :                                       });
+<span class="lineNum">     143 </span>            :                                 }
+<span class="lineNum">     144 </span>            :                               },
+<span class="lineNum">     145 </span><span class="lineCov">          1 :                               child: Row(</span>
+<span class="lineNum">     146 </span>            :                                 mainAxisSize: MainAxisSize.min,
+<span class="lineNum">     147 </span><span class="lineCov">          1 :                                 children: [</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :                                   isAddedWatchlist</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :                                       ? Icon(Icons.check)</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :                                       : Icon(Icons.add),</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :                                   Text('Watchlist'),</span>
+<span class="lineNum">     152 </span>            :                                 ],
+<span class="lineNum">     153 </span>            :                               ),
+<span class="lineNum">     154 </span>            :                             ),
+<span class="lineNum">     155 </span><span class="lineCov">          1 :                             Text(</span>
+<span class="lineNum">     156 </span><span class="lineCov">          3 :                               _showGenres(tvSeries.genres),</span>
+<span class="lineNum">     157 </span>            :                             ),
+<span class="lineNum">     158 </span><span class="lineCov">          1 :                             Text(</span>
+<span class="lineNum">     159 </span><span class="lineCov">          3 :                               _formatListDuration(tvSeries.episodeRunTime),</span>
+<span class="lineNum">     160 </span>            :                             ),
+<span class="lineNum">     161 </span><span class="lineCov">          1 :                             Row(</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :                               children: [</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :                                 RatingBarIndicator(</span>
+<span class="lineNum">     164 </span><span class="lineCov">          3 :                                   rating: tvSeries.voteAverage / 2,</span>
+<span class="lineNum">     165 </span>            :                                   itemCount: 5,
+<span class="lineNum">     166 </span><span class="lineCov">          2 :                                   itemBuilder: (context, index) =&gt; Icon(</span>
+<span class="lineNum">     167 </span>            :                                     Icons.star,
+<span class="lineNum">     168 </span>            :                                     color: kMikadoYellow,
+<span class="lineNum">     169 </span>            :                                   ),
+<span class="lineNum">     170 </span>            :                                   itemSize: 24,
+<span class="lineNum">     171 </span>            :                                 ),
+<span class="lineNum">     172 </span><span class="lineCov">          4 :                                 Text('${tvSeries.voteAverage}')</span>
+<span class="lineNum">     173 </span>            :                               ],
+<span class="lineNum">     174 </span>            :                             ),
+<span class="lineNum">     175 </span><span class="lineCov">          1 :                             SizedBox(height: 16),</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :                             Text(</span>
+<span class="lineNum">     177 </span>            :                               'Overview',
+<span class="lineNum">     178 </span><span class="lineCov">          1 :                               style: kHeading6,</span>
+<span class="lineNum">     179 </span>            :                             ),
+<span class="lineNum">     180 </span><span class="lineCov">          1 :                             Text(</span>
+<span class="lineNum">     181 </span><span class="lineCov">          2 :                               tvSeries.overview,</span>
+<span class="lineNum">     182 </span>            :                             ),
+<span class="lineNum">     183 </span><span class="lineCov">          1 :                             SizedBox(height: 16),</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :                             Text(</span>
+<span class="lineNum">     185 </span>            :                               'Season',
+<span class="lineNum">     186 </span><span class="lineCov">          1 :                               style: kHeading6,</span>
+<span class="lineNum">     187 </span>            :                             ),
+<span class="lineNum">     188 </span><span class="lineCov">          1 :                             Consumer&lt;TvSeriesDetailNotifier&gt;(</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :                               builder: (context, data, child) {</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :                                 return Container(</span>
+<span class="lineNum">     191 </span>            :                                   height: 150,
+<span class="lineNum">     192 </span><span class="lineCov">          1 :                                   child: ListView.builder(</span>
+<span class="lineNum">     193 </span>            :                                     scrollDirection: Axis.horizontal,
+<span class="lineNum">     194 </span><span class="lineCov">          1 :                                     itemBuilder: (context, index) {</span>
+<span class="lineNum">     195 </span>            :                                       final tvSeriesData =
+<span class="lineNum">     196 </span><span class="lineCov">          3 :                                           tvSeries.seasons[index];</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :                                       return Padding(</span>
+<span class="lineNum">     198 </span>            :                                         padding: const EdgeInsets.all(4.0),
+<span class="lineNum">     199 </span><span class="lineCov">          1 :                                         child: Column(</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :                                           children: [</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :                                             InkWell(</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :                                               onTap: () {</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :                                                 Navigator.pushReplacementNamed(</span>
+<span class="lineNum">     204 </span>            :                                                   context,
+<span class="lineNum">     205 </span>            :                                                   TvSeriesDetailPage.ROUTE_NAME,
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 :                                                   arguments: tvSeriesData.id,</span>
+<span class="lineNum">     207 </span>            :                                                 );
+<span class="lineNum">     208 </span>            :                                               },
+<span class="lineNum">     209 </span>            :                                               // child: Text(
+<span class="lineNum">     210 </span>            :                                               //     tvSeriesData.posterPath ?? &quot;-&quot;),
+<span class="lineNum">     211 </span><span class="lineCov">          1 :                                               child: ClipRRect(</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :                                                 borderRadius: BorderRadius.all(</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :                                                   Radius.circular(8),</span>
+<span class="lineNum">     214 </span>            :                                                 ),
+<span class="lineNum">     215 </span><span class="lineCov">          1 :                                                 child: CachedNetworkImage(</span>
+<span class="lineNum">     216 </span>            :                                                     height: 100,
+<span class="lineNum">     217 </span>            :                                                     fit: BoxFit.cover,
+<span class="lineNum">     218 </span>            :                                                     imageUrl:
+<span class="lineNum">     219 </span><span class="lineCov">          2 :                                                         'https://image.tmdb.org/t/p/w500${tvSeriesData.posterPath}',</span>
+<span class="lineNum">     220 </span>            :                                                     placeholder:
+<span class="lineNum">     221 </span><span class="lineCov">          1 :                                                         (context, url) =&gt;</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :                                                             Center(</span>
+<span class="lineNum">     223 </span>            :                                                               child:
+<span class="lineNum">     224 </span><span class="lineCov">          1 :                                                                   CircularProgressIndicator(),</span>
+<span class="lineNum">     225 </span>            :                                                             ),
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :                                                     errorWidget: (context, url,</span>
+<span class="lineNum">     227 </span>            :                                                             error) =&gt;
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :                                                         Container(</span>
+<span class="lineNum">     229 </span>            :                                                           color: Colors.white,
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :                                                           child: Padding(</span>
+<span class="lineNum">     231 </span>            :                                                             padding:
+<span class="lineNum">     232 </span>            :                                                                 const EdgeInsets
+<span class="lineNum">     233 </span>            :                                                                     .all(8.0),
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 :                                                             child: Image.asset(</span>
+<span class="lineNum">     235 </span>            :                                                               'assets/no_image_1.png',
+<span class="lineNum">     236 </span>            :                                                               fit: BoxFit.cover,
+<span class="lineNum">     237 </span>            :                                                               width: 60,
+<span class="lineNum">     238 </span>            :                                                             ),
+<span class="lineNum">     239 </span>            :                                                           ),
+<span class="lineNum">     240 </span>            :                                                         )),
+<span class="lineNum">     241 </span>            :                                               ),
+<span class="lineNum">     242 </span>            :                                             ),
+<span class="lineNum">     243 </span><span class="lineCov">          2 :                                             Text(tvSeriesData.name),</span>
+<span class="lineNum">     244 </span><span class="lineCov">          1 :                                             Text(</span>
+<span class="lineNum">     245 </span><span class="lineCov">          2 :                                                 &quot;Episode : ${tvSeriesData.episodeCount}&quot;),</span>
+<span class="lineNum">     246 </span>            :                                           ],
+<span class="lineNum">     247 </span>            :                                         ),
+<span class="lineNum">     248 </span>            :                                       );
+<span class="lineNum">     249 </span>            :                                     },
+<span class="lineNum">     250 </span><span class="lineCov">          3 :                                     itemCount: tvSeries.seasons.length,</span>
+<span class="lineNum">     251 </span>            :                                   ),
+<span class="lineNum">     252 </span>            :                                 );
+<span class="lineNum">     253 </span>            :                               },
+<span class="lineNum">     254 </span>            :                             ),
+<span class="lineNum">     255 </span><span class="lineCov">          1 :                             SizedBox(height: 15),</span>
+<span class="lineNum">     256 </span><span class="lineCov">          1 :                             Text(</span>
+<span class="lineNum">     257 </span>            :                               'Recommendations',
+<span class="lineNum">     258 </span><span class="lineCov">          1 :                               style: kHeading6,</span>
+<span class="lineNum">     259 </span>            :                             ),
+<span class="lineNum">     260 </span><span class="lineCov">          1 :                             Consumer&lt;TvSeriesDetailNotifier&gt;(</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :                               builder: (context, data, child) {</span>
+<span class="lineNum">     262 </span><span class="lineCov">          2 :                                 if (data.recommendationState ==</span>
+<span class="lineNum">     263 </span>            :                                     RequestState.Loading) {
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 :                                   return Center(</span>
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 :                                     child: CircularProgressIndicator(),</span>
+<span class="lineNum">     266 </span>            :                                   );
+<span class="lineNum">     267 </span><span class="lineCov">          2 :                                 } else if (data.recommendationState ==</span>
+<span class="lineNum">     268 </span>            :                                     RequestState.Error) {
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 :                                   return Text(data.message);</span>
+<span class="lineNum">     270 </span><span class="lineCov">          2 :                                 } else if (data.recommendationState ==</span>
+<span class="lineNum">     271 </span>            :                                     RequestState.Loaded) {
+<span class="lineNum">     272 </span><span class="lineCov">          1 :                                   return Container(</span>
+<span class="lineNum">     273 </span>            :                                     height: 150,
+<span class="lineNum">     274 </span><span class="lineCov">          1 :                                     child: ListView.builder(</span>
+<span class="lineNum">     275 </span>            :                                       scrollDirection: Axis.horizontal,
+<span class="lineNum">     276 </span><span class="lineNoCov">          0 :                                       itemBuilder: (context, index) {</span>
+<span class="lineNum">     277 </span><span class="lineNoCov">          0 :                                         final tvSeries = recommendations[index];</span>
+<span class="lineNum">     278 </span><span class="lineNoCov">          0 :                                         return Padding(</span>
+<span class="lineNum">     279 </span>            :                                           padding: const EdgeInsets.all(4.0),
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :                                           child: InkWell(</span>
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 :                                             onTap: () {</span>
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 :                                               Navigator.pushReplacementNamed(</span>
+<span class="lineNum">     283 </span>            :                                                 context,
+<span class="lineNum">     284 </span>            :                                                 TvSeriesDetailPage.ROUTE_NAME,
+<span class="lineNum">     285 </span><span class="lineNoCov">          0 :                                                 arguments: tvSeries.id,</span>
+<span class="lineNum">     286 </span>            :                                               );
+<span class="lineNum">     287 </span>            :                                             },
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 :                                             child: ClipRRect(</span>
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :                                               borderRadius: BorderRadius.all(</span>
+<span class="lineNum">     290 </span><span class="lineNoCov">          0 :                                                 Radius.circular(8),</span>
+<span class="lineNum">     291 </span>            :                                               ),
+<span class="lineNum">     292 </span><span class="lineNoCov">          0 :                                               child: CachedNetworkImage(</span>
+<span class="lineNum">     293 </span>            :                                                   imageUrl:
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :                                                       'https://image.tmdb.org/t/p/w500${tvSeries.posterPath}',</span>
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 :                                                   placeholder: (context, url) =&gt;</span>
+<span class="lineNum">     296 </span><span class="lineNoCov">          0 :                                                       Center(</span>
+<span class="lineNum">     297 </span>            :                                                         child:
+<span class="lineNum">     298 </span><span class="lineNoCov">          0 :                                                             CircularProgressIndicator(),</span>
+<span class="lineNum">     299 </span>            :                                                       ),
+<span class="lineNum">     300 </span><span class="lineNoCov">          0 :                                                   errorWidget: (context, url,</span>
+<span class="lineNum">     301 </span>            :                                                           error) =&gt;
+<span class="lineNum">     302 </span><span class="lineNoCov">          0 :                                                       Container(</span>
+<span class="lineNum">     303 </span>            :                                                         color: Colors.white,
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 :                                                         child: Padding(</span>
+<span class="lineNum">     305 </span>            :                                                           padding:
+<span class="lineNum">     306 </span>            :                                                               const EdgeInsets
+<span class="lineNum">     307 </span>            :                                                                   .all(8.0),
+<span class="lineNum">     308 </span><span class="lineNoCov">          0 :                                                           child: Image.asset(</span>
+<span class="lineNum">     309 </span>            :                                                             'assets/no_image_1.png',
+<span class="lineNum">     310 </span>            :                                                             fit: BoxFit.cover,
+<span class="lineNum">     311 </span>            :                                                             width: 60,
+<span class="lineNum">     312 </span>            :                                                           ),
+<span class="lineNum">     313 </span>            :                                                         ),
+<span class="lineNum">     314 </span>            :                                                       )),
+<span class="lineNum">     315 </span>            :                                             ),
+<span class="lineNum">     316 </span>            :                                           ),
+<span class="lineNum">     317 </span>            :                                         );
+<span class="lineNum">     318 </span>            :                                       },
+<span class="lineNum">     319 </span><span class="lineCov">          2 :                                       itemCount: recommendations.length,</span>
+<span class="lineNum">     320 </span>            :                                     ),
+<span class="lineNum">     321 </span>            :                                   );
+<span class="lineNum">     322 </span>            :                                 } else {
+<span class="lineNum">     323 </span><span class="lineNoCov">          0 :                                   return Container();</span>
+<span class="lineNum">     324 </span>            :                                 }
+<span class="lineNum">     325 </span>            :                               },
+<span class="lineNum">     326 </span>            :                             ),
+<span class="lineNum">     327 </span>            :                           ],
+<span class="lineNum">     328 </span>            :                         ),
+<span class="lineNum">     329 </span>            :                       ),
+<span class="lineNum">     330 </span>            :                     ),
+<span class="lineNum">     331 </span><span class="lineCov">          1 :                     Align(</span>
+<span class="lineNum">     332 </span>            :                       alignment: Alignment.topCenter,
+<span class="lineNum">     333 </span><span class="lineCov">          1 :                       child: Container(</span>
+<span class="lineNum">     334 </span>            :                         color: Colors.white,
+<span class="lineNum">     335 </span>            :                         height: 4,
+<span class="lineNum">     336 </span>            :                         width: 48,
+<span class="lineNum">     337 </span>            :                       ),
+<span class="lineNum">     338 </span>            :                     ),
+<span class="lineNum">     339 </span>            :                   ],
+<span class="lineNum">     340 </span>            :                 ),
+<span class="lineNum">     341 </span>            :               );
+<span class="lineNum">     342 </span>            :             },
+<span class="lineNum">     343 </span>            :             // initialChildSize: 0.5,
+<span class="lineNum">     344 </span>            :             minChildSize: 0.25,
+<span class="lineNum">     345 </span>            :             // maxChildSize: 1.0,
+<span class="lineNum">     346 </span>            :           ),
+<span class="lineNum">     347 </span>            :         ),
+<span class="lineNum">     348 </span><span class="lineCov">          1 :         Padding(</span>
+<span class="lineNum">     349 </span>            :           padding: const EdgeInsets.all(8.0),
+<span class="lineNum">     350 </span><span class="lineCov">          1 :           child: CircleAvatar(</span>
+<span class="lineNum">     351 </span>            :             backgroundColor: kRichBlack,
+<span class="lineNum">     352 </span>            :             foregroundColor: Colors.white,
+<span class="lineNum">     353 </span><span class="lineCov">          1 :             child: IconButton(</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :               icon: Icon(Icons.arrow_back),</span>
+<span class="lineNum">     355 </span><span class="lineNoCov">          0 :               onPressed: () {</span>
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 :                 Navigator.pop(context);</span>
+<span class="lineNum">     357 </span>            :               },
+<span class="lineNum">     358 </span>            :             ),
+<span class="lineNum">     359 </span>            :           ),
+<span class="lineNum">     360 </span>            :         )
+<span class="lineNum">     361 </span>            :       ],
+<span class="lineNum">     362 </span>            :     );
+<span class="lineNum">     363 </span>            :   }
+<span class="lineNum">     364 </span>            : 
+<span class="lineNum">     365 </span><span class="lineCov">          1 :   String _showGenres(List&lt;Genre&gt; genres) {</span>
+<span class="lineNum">     366 </span>            :     String result = '';
+<span class="lineNum">     367 </span><span class="lineCov">          2 :     for (var genre in genres) {</span>
+<span class="lineNum">     368 </span><span class="lineCov">          3 :       result += genre.name + ', ';</span>
+<span class="lineNum">     369 </span>            :     }
+<span class="lineNum">     370 </span>            : 
+<span class="lineNum">     371 </span><span class="lineCov">          1 :     if (result.isEmpty) {</span>
+<span class="lineNum">     372 </span>            :       return result;
+<span class="lineNum">     373 </span>            :     }
+<span class="lineNum">     374 </span>            : 
+<span class="lineNum">     375 </span><span class="lineCov">          3 :     return result.substring(0, result.length - 2);</span>
+<span class="lineNum">     376 </span>            :   }
+<span class="lineNum">     377 </span>            : 
+<span class="lineNum">     378 </span><span class="lineNoCov">          0 :   String _showDuration(int runtime) {</span>
+<span class="lineNum">     379 </span><span class="lineNoCov">          0 :     final int hours = runtime ~/ 60;</span>
+<span class="lineNum">     380 </span><span class="lineNoCov">          0 :     final int minutes = runtime % 60;</span>
+<span class="lineNum">     381 </span>            : 
+<span class="lineNum">     382 </span><span class="lineNoCov">          0 :     if (hours &gt; 0) {</span>
+<span class="lineNum">     383 </span><span class="lineNoCov">          0 :       return '${hours}h ${minutes}m';</span>
+<span class="lineNum">     384 </span>            :     } else {
+<span class="lineNum">     385 </span><span class="lineNoCov">          0 :       return '${minutes}m';</span>
+<span class="lineNum">     386 </span>            :     }
+<span class="lineNum">     387 </span>            :   }
+<span class="lineNum">     388 </span>            : 
+<span class="lineNum">     389 </span><span class="lineCov">          1 :   String _formatListDuration(List&lt;int&gt; runtimes) =&gt;</span>
+<span class="lineNum">     390 </span><span class="lineCov">          2 :       runtimes.map((runtime) =&gt; _showDuration(runtime)).join(&quot;, &quot;);</span>
+<span class="lineNum">     391 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

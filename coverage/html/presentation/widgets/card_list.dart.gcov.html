@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov.info - presentation/widgets/card_list.dart</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">presentation/widgets</a> - card_list.dart<span style="font-size: 80%;"> (source / <a href="card_list.dart.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-06-03 09:16:25</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : import 'package:cached_network_image/cached_network_image.dart';</a>
+<span class="lineNum">       2 </span>            : import 'package:ditonton/common/constants.dart';
+<span class="lineNum">       3 </span>            : import 'package:ditonton/presentation/pages/movie_detail_page.dart';
+<span class="lineNum">       4 </span>            : import 'package:ditonton/presentation/pages/tv_series_detail_page.dart';
+<span class="lineNum">       5 </span>            : import 'package:flutter/material.dart';
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span>            : class CardList extends StatelessWidget {
+<span class="lineNum">       8 </span>            :   final dataList;
+<span class="lineNum">       9 </span>            :   final bool isTvSeries;
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span><span class="lineNoCov">          0 :   CardList({this.dataList, this.isTvSeries = false});</span>
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 :   @override</span>
+<span class="lineNum">      14 </span>            :   Widget build(BuildContext context) {
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 :     return Container(</span>
+<span class="lineNum">      16 </span>            :       margin: const EdgeInsets.symmetric(vertical: 4),
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 :       child: InkWell(</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 :         onTap: () {</span>
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 :           Navigator.pushNamed(</span>
+<span class="lineNum">      20 </span>            :             context,
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :             isTvSeries</span>
+<span class="lineNum">      22 </span>            :                 ? TvSeriesDetailPage.ROUTE_NAME
+<span class="lineNum">      23 </span>            :                 : MovieDetailPage.ROUTE_NAME,
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :             arguments: dataList.id,</span>
+<span class="lineNum">      25 </span>            :           );
+<span class="lineNum">      26 </span>            :         },
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :         child: Stack(</span>
+<span class="lineNum">      28 </span>            :           alignment: Alignment.bottomLeft,
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :           children: [</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :             Card(</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :               child: Container(</span>
+<span class="lineNum">      32 </span>            :                 margin: const EdgeInsets.only(
+<span class="lineNum">      33 </span>            :                   left: 16 + 80 + 16,
+<span class="lineNum">      34 </span>            :                   bottom: 8,
+<span class="lineNum">      35 </span>            :                   right: 8,
+<span class="lineNum">      36 </span>            :                 ),
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :                 child: Column(</span>
+<span class="lineNum">      38 </span>            :                   crossAxisAlignment: CrossAxisAlignment.start,
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :                   children: [</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :                     Text(</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :                       isTvSeries ? dataList.name : dataList.title ?? '-',</span>
+<span class="lineNum">      42 </span>            :                       maxLines: 1,
+<span class="lineNum">      43 </span>            :                       overflow: TextOverflow.ellipsis,
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :                       style: kHeading6,</span>
+<span class="lineNum">      45 </span>            :                     ),
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :                     SizedBox(height: 16),</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :                     Text(</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :                       dataList.overview ?? '-',</span>
+<span class="lineNum">      49 </span>            :                       maxLines: 2,
+<span class="lineNum">      50 </span>            :                       overflow: TextOverflow.ellipsis,
+<span class="lineNum">      51 </span>            :                     ),
+<span class="lineNum">      52 </span>            :                   ],
+<span class="lineNum">      53 </span>            :                 ),
+<span class="lineNum">      54 </span>            :               ),
+<span class="lineNum">      55 </span>            :             ),
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :             Container(</span>
+<span class="lineNum">      57 </span>            :               margin: const EdgeInsets.only(
+<span class="lineNum">      58 </span>            :                 left: 16,
+<span class="lineNum">      59 </span>            :                 bottom: 16,
+<span class="lineNum">      60 </span>            :               ),
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :               child: ClipRRect(</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :                 child: CachedNetworkImage(</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :                   imageUrl: '$BASE_IMAGE_URL${dataList.posterPath}',</span>
+<span class="lineNum">      64 </span>            :                   width: 80,
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :                   placeholder: (context, url) =&gt; Center(</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :                     child: CircularProgressIndicator(),</span>
+<span class="lineNum">      67 </span>            :                   ),
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :                   errorWidget: (context, url, error) =&gt; Image.asset(</span>
+<span class="lineNum">      69 </span>            :                     'assets/no_image.png',
+<span class="lineNum">      70 </span>            :                     fit: BoxFit.cover,
+<span class="lineNum">      71 </span>            :                   ),
+<span class="lineNum">      72 </span>            :                 ),
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :                 borderRadius: BorderRadius.all(Radius.circular(8)),</span>
+<span class="lineNum">      74 </span>            :               ),
+<span class="lineNum">      75 </span>            :             ),
+<span class="lineNum">      76 </span>            :           ],
+<span class="lineNum">      77 </span>            :         ),
+<span class="lineNum">      78 </span>            :       ),
+<span class="lineNum">      79 </span>            :     );
+<span class="lineNum">      80 </span>            :   }
+<span class="lineNum">      81 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
