@@ -2,7 +2,7 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/movie/movie.dart';
 import 'package:ditonton/domain/entities/tv_series/tv_series.dart';
 import 'package:ditonton/domain/usecases/movie/get_watchlist_movies.dart';
-import 'package:ditonton/domain/usecases/tv_series/get_watchlist_movies.dart';
+import 'package:ditonton/domain/usecases/tv_series/get_watchlist_tv_series.dart';
 import 'package:flutter/foundation.dart';
 
 class WatchlistNotifier extends ChangeNotifier {

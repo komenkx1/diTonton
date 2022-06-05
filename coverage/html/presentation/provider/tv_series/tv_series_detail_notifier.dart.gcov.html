@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">49</td>
             <td class="headerCovTableEntry">51</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryHi">96.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-06-03 09:16:25</td>
+            <td class="headerValue">2022-06-05 10:30:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -81,7 +81,7 @@
 <span class="lineNum">      19 </span>            :   final SaveWatchlistTvSeries saveWatchlist;
 <span class="lineNum">      20 </span>            :   final RemoveWatchlistTvSeries removeWatchlist;
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 :   TvSeriesDetailNotifier({</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :   TvSeriesDetailNotifier({</span>
 <span class="lineNum">      23 </span>            :     required this.getTvSeriesDetail,
 <span class="lineNum">      24 </span>            :     required this.getTvSeriesRecommendations,
 <span class="lineNum">      25 </span>            :     required this.getWatchListStatus,
@@ -90,91 +90,91 @@
 <span class="lineNum">      28 </span>            :   });
 <span class="lineNum">      29 </span>            : 
 <span class="lineNum">      30 </span>            :   late TvSeriesDetail _tvSeries;
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :   TvSeriesDetail get tvSeries =&gt; _tvSeries;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :   TvSeriesDetail get tvSeries =&gt; _tvSeries;</span>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            :   RequestState _tvSeriesState = RequestState.Empty;
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :   RequestState get tvSeriesState =&gt; _tvSeriesState;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :   RequestState get tvSeriesState =&gt; _tvSeriesState;</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            :   List&lt;TvSeries&gt; _tvSeriesRecommendations = [];
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :   List&lt;TvSeries&gt; get tvSeriesRecommendations =&gt; _tvSeriesRecommendations;</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :   List&lt;TvSeries&gt; get tvSeriesRecommendations =&gt; _tvSeriesRecommendations;</span>
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            :   RequestState _recommendationState = RequestState.Empty;
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 :   RequestState get recommendationState =&gt; _recommendationState;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          2 :   RequestState get recommendationState =&gt; _recommendationState;</span>
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            :   String _message = '';
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 :   String get message =&gt; _message;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :   String get message =&gt; _message;</span>
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            :   bool _isAddedtoWatchlist = false;
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :   bool get isAddedToWatchlist =&gt; _isAddedtoWatchlist;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 :   bool get isAddedToWatchlist =&gt; _isAddedtoWatchlist;</span>
 <span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :   Future&lt;void&gt; fetchTvSeriesDetail(int id) async {</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     _tvSeriesState = RequestState.Loading;</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     notifyListeners();</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     final detailResult = await getTvSeriesDetail.execute(id);</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     final recommendationResult = await getTvSeriesRecommendations.execute(id);</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     detailResult.fold(</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :       (failure) {</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :         _tvSeriesState = RequestState.Error;</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :         _message = failure.message;</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :         notifyListeners();</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :   Future&lt;void&gt; fetchTvSeriesDetail(int id) async {</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :     _tvSeriesState = RequestState.Loading;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :     notifyListeners();</span>
+<span class="lineNum">      51 </span><span class="lineCov">          3 :     final detailResult = await getTvSeriesDetail.execute(id);</span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 :     final recommendationResult = await getTvSeriesRecommendations.execute(id);</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     detailResult.fold(</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :       (failure) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :         _tvSeriesState = RequestState.Error;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          2 :         _message = failure.message;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :         notifyListeners();</span>
 <span class="lineNum">      58 </span>            :       },
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 :       (tvSeries) {</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :         _recommendationState = RequestState.Loading;</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 :         _tvSeries = tvSeries;</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 :         notifyListeners();</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :         recommendationResult.fold(</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 :           (failure) {</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 :             _recommendationState = RequestState.Error;</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :             _message = failure.message;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :       (tvSeries) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :         _recommendationState = RequestState.Loading;</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :         _tvSeries = tvSeries;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :         notifyListeners();</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :         recommendationResult.fold(</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :           (failure) {</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :             _recommendationState = RequestState.Error;</span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 :             _message = failure.message;</span>
 <span class="lineNum">      67 </span>            :           },
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :           (tvSeries) {</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :             _recommendationState = RequestState.Loaded;</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 :             _tvSeriesRecommendations = tvSeries;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :           (tvSeries) {</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :             _recommendationState = RequestState.Loaded;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :             _tvSeriesRecommendations = tvSeries;</span>
 <span class="lineNum">      71 </span>            :           },
 <span class="lineNum">      72 </span>            :         );
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :         _tvSeriesState = RequestState.Loaded;</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :         notifyListeners();</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :         _tvSeriesState = RequestState.Loaded;</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :         notifyListeners();</span>
 <span class="lineNum">      75 </span>            :       },
 <span class="lineNum">      76 </span>            :     );
 <span class="lineNum">      77 </span>            :   }
 <span class="lineNum">      78 </span>            : 
 <span class="lineNum">      79 </span>            :   String _watchlistMessage = '';
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :   String get watchlistMessage =&gt; _watchlistMessage;</span>
+<span class="lineNum">      80 </span><span class="lineCov">          2 :   String get watchlistMessage =&gt; _watchlistMessage;</span>
 <span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :   Future&lt;void&gt; addWatchlist(TvSeriesDetail tvSeries) async {</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     final result = await saveWatchlist.execute(tvSeries);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :   Future&lt;void&gt; addWatchlist(TvSeriesDetail tvSeries) async {</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 :     final result = await saveWatchlist.execute(tvSeries);</span>
 <span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     await result.fold(</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :       (failure) async {</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :         _watchlistMessage = failure.message;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          2 :     await result.fold(</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :       (failure) async {</span>
+<span class="lineNum">      87 </span><span class="lineCov">          2 :         _watchlistMessage = failure.message;</span>
 <span class="lineNum">      88 </span>            :       },
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 :       (successMessage) async {</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 :         _watchlistMessage = successMessage;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :       (successMessage) async {</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :         _watchlistMessage = successMessage;</span>
 <span class="lineNum">      91 </span>            :       },
 <span class="lineNum">      92 </span>            :     );
 <span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     await loadWatchlistStatus(tvSeries.id);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          3 :     await loadWatchlistStatus(tvSeries.id);</span>
 <span class="lineNum">      95 </span>            :   }
 <span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :   Future&lt;void&gt; removeFromWatchlist(TvSeriesDetail tvSeries) async {</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     final result = await removeWatchlist.execute(tvSeries);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   Future&lt;void&gt; removeFromWatchlist(TvSeriesDetail tvSeries) async {</span>
+<span class="lineNum">      98 </span><span class="lineCov">          3 :     final result = await removeWatchlist.execute(tvSeries);</span>
 <span class="lineNum">      99 </span>            : 
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     await result.fold(</span>
+<span class="lineNum">     100 </span><span class="lineCov">          2 :     await result.fold(</span>
 <span class="lineNum">     101 </span><span class="lineNoCov">          0 :       (failure) async {</span>
 <span class="lineNum">     102 </span><span class="lineNoCov">          0 :         _watchlistMessage = failure.message;</span>
 <span class="lineNum">     103 </span>            :       },
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :       (successMessage) async {</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :         _watchlistMessage = successMessage;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :       (successMessage) async {</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :         _watchlistMessage = successMessage;</span>
 <span class="lineNum">     106 </span>            :       },
 <span class="lineNum">     107 </span>            :     );
 <span class="lineNum">     108 </span>            : 
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :     await loadWatchlistStatus(tvSeries.id);</span>
+<span class="lineNum">     109 </span><span class="lineCov">          3 :     await loadWatchlistStatus(tvSeries.id);</span>
 <span class="lineNum">     110 </span>            :   }
 <span class="lineNum">     111 </span>            : 
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :   Future&lt;void&gt; loadWatchlistStatus(int id) async {</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     final result = await getWatchListStatus.execute(id);</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 :     _isAddedtoWatchlist = result;</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 :     notifyListeners();</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :   Future&lt;void&gt; loadWatchlistStatus(int id) async {</span>
+<span class="lineNum">     113 </span><span class="lineCov">          3 :     final result = await getWatchListStatus.execute(id);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     _isAddedtoWatchlist = result;</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     notifyListeners();</span>
 <span class="lineNum">     116 </span>            :   }
 <span class="lineNum">     117 </span>            : }
 </pre>

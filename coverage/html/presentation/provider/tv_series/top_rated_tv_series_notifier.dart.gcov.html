@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">17</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-06-03 09:16:25</td>
+            <td class="headerValue">2022-06-05 10:30:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -68,33 +68,33 @@
 <span class="lineNum">       6 </span>            : class TopRatedTvSeriesNotifier extends ChangeNotifier {
 <span class="lineNum">       7 </span>            :   final GetTopRatedTvSeries getTopRatedTvSeries;
 <span class="lineNum">       8 </span>            : 
-<span class="lineNum">       9 </span><span class="lineNoCov">          0 :   TopRatedTvSeriesNotifier({required this.getTopRatedTvSeries});</span>
+<span class="lineNum">       9 </span><span class="lineCov">          1 :   TopRatedTvSeriesNotifier({required this.getTopRatedTvSeries});</span>
 <span class="lineNum">      10 </span>            : 
 <span class="lineNum">      11 </span>            :   RequestState _state = RequestState.Empty;
-<span class="lineNum">      12 </span><span class="lineNoCov">          0 :   RequestState get state =&gt; _state;</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 :   RequestState get state =&gt; _state;</span>
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            :   List&lt;TvSeries&gt; _tvSeries = [];
-<span class="lineNum">      15 </span><span class="lineNoCov">          0 :   List&lt;TvSeries&gt; get tvSeries =&gt; _tvSeries;</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :   List&lt;TvSeries&gt; get tvSeries =&gt; _tvSeries;</span>
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            :   String _message = '';
-<span class="lineNum">      18 </span><span class="lineNoCov">          0 :   String get message =&gt; _message;</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :   String get message =&gt; _message;</span>
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 :   Future&lt;void&gt; fetchTopRatedTvSeries() async {</span>
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 :     _state = RequestState.Loading;</span>
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 :     notifyListeners();</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :   Future&lt;void&gt; fetchTopRatedTvSeries() async {</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :     _state = RequestState.Loading;</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :     notifyListeners();</span>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 :     final result = await getTopRatedTvSeries.execute();</span>
+<span class="lineNum">      24 </span><span class="lineCov">          3 :     final result = await getTopRatedTvSeries.execute();</span>
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 :     result.fold(</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 :       (failure) {</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :         _message = failure.message;</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         _state = RequestState.Error;</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         notifyListeners();</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :     result.fold(</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :       (failure) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :         _message = failure.message;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :         _state = RequestState.Error;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :         notifyListeners();</span>
 <span class="lineNum">      31 </span>            :       },
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 :       (tvSeriesData) {</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :         _tvSeries = tvSeriesData;</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         _state = RequestState.Loaded;</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         notifyListeners();</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :       (tvSeriesData) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :         _tvSeries = tvSeriesData;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :         _state = RequestState.Loaded;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :         notifyListeners();</span>
 <span class="lineNum">      36 </span>            :       },
 <span class="lineNum">      37 </span>            :     );
 <span class="lineNum">      38 </span>            :   }

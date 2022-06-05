@@ -22,7 +22,7 @@ import 'package:ditonton/domain/usecases/movie/save_watchlist.dart';
 import 'package:ditonton/domain/usecases/movie/search_movies.dart';
 import 'package:ditonton/domain/usecases/tv_series/get_tv_series_detail.dart';
 import 'package:ditonton/domain/usecases/tv_series/get_tv_series_recommendations.dart';
-import 'package:ditonton/domain/usecases/tv_series/get_watchlist_movies.dart';
+import 'package:ditonton/domain/usecases/tv_series/get_watchlist_tv_series.dart';
 import 'package:ditonton/domain/usecases/tv_series/get_watchlist_status.dart';
 import 'package:ditonton/domain/usecases/tv_series/remove_watchlist.dart';
 import 'package:ditonton/domain/usecases/tv_series/save_watchlist.dart';

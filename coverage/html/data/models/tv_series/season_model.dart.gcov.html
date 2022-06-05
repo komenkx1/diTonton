@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">24</td>
             <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntryMed">75.0 %</td>
+            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-06-03 09:16:25</td>
+            <td class="headerValue">2022-06-05 10:30:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -71,7 +71,7 @@
 <span class="lineNum">       9 </span>            :   final String overview;
 <span class="lineNum">      10 </span>            :   final String? posterPath;
 <span class="lineNum">      11 </span>            :   final int seasonNumber;
-<span class="lineNum">      12 </span><span class="lineCov">          3 :   SeasonModel({</span>
+<span class="lineNum">      12 </span><span class="lineCov">          4 :   SeasonModel({</span>
 <span class="lineNum">      13 </span>            :     required this.airDate,
 <span class="lineNum">      14 </span>            :     required this.episodeCount,
 <span class="lineNum">      15 </span>            :     required this.id,
@@ -91,22 +91,22 @@
 <span class="lineNum">      29 </span><span class="lineCov">          1 :         seasonNumber: json['season_number'],</span>
 <span class="lineNum">      30 </span>            :       );
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :         &quot;air_date&quot;: airDate,</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         &quot;episode_count&quot;: episodeCount,</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         &quot;id&quot;: id,</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         &quot;name&quot;: name,</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :         &quot;overview&quot;: overview,</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         &quot;poster_path&quot;: posterPath,</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :         &quot;season_number&quot;: seasonNumber,</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :         &quot;air_date&quot;: airDate,</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :         &quot;episode_count&quot;: episodeCount,</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :         &quot;id&quot;: id,</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :         &quot;name&quot;: name,</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :         &quot;overview&quot;: overview,</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :         &quot;poster_path&quot;: posterPath,</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :         &quot;season_number&quot;: seasonNumber,</span>
 <span class="lineNum">      40 </span>            :       };
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">          4 :   Season toEntity() =&gt; Season(</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 :         id: this.id,</span>
-<span class="lineNum">      44 </span><span class="lineCov">          2 :         posterPath: this.posterPath,</span>
-<span class="lineNum">      45 </span><span class="lineCov">          2 :         seasonNumber: this.seasonNumber,</span>
-<span class="lineNum">      46 </span><span class="lineCov">          2 :         episodeCount: this.episodeCount,</span>
-<span class="lineNum">      47 </span><span class="lineCov">          2 :         name: this.name,</span>
+<span class="lineNum">      42 </span><span class="lineCov">          6 :   Season toEntity() =&gt; Season(</span>
+<span class="lineNum">      43 </span><span class="lineCov">          3 :         id: this.id,</span>
+<span class="lineNum">      44 </span><span class="lineCov">          3 :         posterPath: this.posterPath,</span>
+<span class="lineNum">      45 </span><span class="lineCov">          3 :         seasonNumber: this.seasonNumber,</span>
+<span class="lineNum">      46 </span><span class="lineCov">          3 :         episodeCount: this.episodeCount,</span>
+<span class="lineNum">      47 </span><span class="lineCov">          3 :         name: this.name,</span>
 <span class="lineNum">      48 </span>            :       );
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span><span class="lineCov">          1 :   @override</span>
