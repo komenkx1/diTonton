@@ -65,7 +65,7 @@ final testMovieMap = {
   'title': 'title',
 };
 
-final testTVSeriesModel = TvSeriesModel(
+final testTvSeriesModel = TvSeriesModel(
     backdropPath: "/1qpUk27LVI9UoTS7S0EixUBj5aR.jpg",
     firstAirDate: "2022-03-24",
     genreIds: [10759, 10765],
@@ -81,16 +81,16 @@ final testTVSeriesModel = TvSeriesModel(
     voteAverage: 8.7,
     voteCount: 472);
 
-final testTVSeriesModelList = <TvSeriesModel>[testTVSeriesModel];
+final testTvSeriesModelList = <TvSeriesModel>[testTvSeriesModel];
 
-final testTVSeries = testTVSeriesModel.toEntity();
+final testTvSeries = testTvSeriesModel.toEntity();
 
-final testTVSeriesList = <TvSeries>[testTVSeries];
+final testTvSeriesList = <TvSeries>[testTvSeries];
 
-final testTVSeriesResponse = TvSeriesResponse(
-    results: testTVSeriesModelList, page: 1, totalPages: 1, totalResults: 1);
+final testTvSeriesResponse = TvSeriesResponse(
+    results: testTvSeriesModelList, page: 1, totalPages: 1, totalResults: 1);
 
-final testTVSeriesDetailResponse = TvSeriesDetailModel(
+final testTvSeriesDetailResponse = TvSeriesDetailModel(
   adult: false,
   backdropPath: '',
   genres: [GenreModel(id: 1, name: 'Action')],
@@ -123,23 +123,23 @@ final testTVSeriesDetailResponse = TvSeriesDetailModel(
   voteCount: 3,
 );
 
-final testTVSeriesDetailResponseEntity = testTVSeriesDetailResponse.toEntity();
+final testTvSeriesDetailResponseEntity = testTvSeriesDetailResponse.toEntity();
 
-final testTVSeriesTable =
-    TvSeriesTable.fromEntity(testTVSeriesDetailResponseEntity);
+final testTvSeriesTable =
+    TvSeriesTable.fromEntity(testTvSeriesDetailResponseEntity);
 
-final testTVSeriesTableList = <TvSeriesTable>[testTVSeriesTable];
+final testTvSeriesTableList = <TvSeriesTable>[testTvSeriesTable];
 
-final testWatchlistTVSeries = [testTVSeriesTable.toEntity()];
+final testWatchlistTvSeries = [testTvSeriesTable.toEntity()];
 
-final testTVSeriesMaping = {
+final testTvSeriesMaping = {
   'id': 1,
   'overview': 'overview',
   'posterPath': 'posterPath',
   'name': 'name',
 };
 
-final testTVSeriesDetail = TvSeriesDetailModel(
+final testTvSeriesDetail = TvSeriesDetailModel(
   adult: false,
   popularity: 1,
   posterPath: 'posterPath',
@@ -162,11 +162,11 @@ final testTVSeriesDetail = TvSeriesDetailModel(
   status: 'status',
 );
 
-final testTVSeriesDetailEntity = testTVSeriesDetail.toEntity();
-final testTVSeriesMap = testTVSeriesDetail.toJson();
+final testTvSeriesDetailEntity = testTvSeriesDetail.toEntity();
+final testTvSeriesMap = testTvSeriesDetail.toJson();
 
 //seasons
-final testSeasonTVSeriesModel = SeasonModel(
+final testSeasonTvSeriesModel = SeasonModel(
   id: 1,
   name: 'season',
   posterPath: 'poster',
@@ -176,6 +176,6 @@ final testSeasonTVSeriesModel = SeasonModel(
   overview: '',
 );
 
-final testSeason = testSeasonTVSeriesModel.toEntity();
+final testSeason = testSeasonTvSeriesModel.toEntity();
 
-final testSeasonMap = testSeasonTVSeriesModel.toJson();
+final testSeasonMap = testSeasonTvSeriesModel.toJson();

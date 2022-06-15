@@ -28,10 +28,10 @@ import 'tv_series_detail_notifier_test.mocks.dart';
   RemoveWatchlistTvSeries,
 ])
 void main() {
-  late MockTvSeriesRepository mockTVSeriesRepository;
+  late MockTvSeriesRepository mockTvSeriesRepository;
   late TvSeriesDetailNotifier provider;
-  late MockGetTvSeriesDetail mockGetTVSeriesDetail;
-  late MockGetTvSeriesRecommendations mockGetTVSeriesRecommendations;
+  late MockGetTvSeriesDetail mockGetTvSeriesDetail;
+  late MockGetTvSeriesRecommendations mockGetTvSeriesRecommendations;
   late GetWatchListStatusTvSeries mockGetWatchlistStatus;
   late MockSaveWatchlistTvSeries mockSaveWatchlist;
   late MockRemoveWatchlistTvSeries mockRemoveWatchlist;
@@ -39,15 +39,15 @@ void main() {
 
   setUp(() {
     listenerCallCount = 0;
-    mockTVSeriesRepository = MockTvSeriesRepository();
-    mockGetTVSeriesDetail = MockGetTvSeriesDetail();
-    mockGetTVSeriesRecommendations = MockGetTvSeriesRecommendations();
-    mockGetWatchlistStatus = GetWatchListStatusTvSeries(mockTVSeriesRepository);
+    mockTvSeriesRepository = MockTvSeriesRepository();
+    mockGetTvSeriesDetail = MockGetTvSeriesDetail();
+    mockGetTvSeriesRecommendations = MockGetTvSeriesRecommendations();
+    mockGetWatchlistStatus = GetWatchListStatusTvSeries(mockTvSeriesRepository);
     mockSaveWatchlist = MockSaveWatchlistTvSeries();
     mockRemoveWatchlist = MockRemoveWatchlistTvSeries();
     provider = TvSeriesDetailNotifier(
-      getTvSeriesDetail: mockGetTVSeriesDetail,
-      getTvSeriesRecommendations: mockGetTVSeriesRecommendations,
+      getTvSeriesDetail: mockGetTvSeriesDetail,
+      getTvSeriesRecommendations: mockGetTvSeriesRecommendations,
       getWatchListStatus: mockGetWatchlistStatus,
       saveWatchlist: mockSaveWatchlist,
       removeWatchlist: mockRemoveWatchlist,
@@ -58,7 +58,7 @@ void main() {
 
   final tId = 1;
 
-  final tATVSeries = TvSeries(
+  final tATvSeries = TvSeries(
     backdropPath: 'backdropPath',
     genreIds: [1, 2, 3],
     id: 1,
@@ -73,24 +73,24 @@ void main() {
     originalName: 'originalName',
     originCountry: ['originCountry'],
   );
-  final tTVSeries = <TvSeries>[tATVSeries];
+  final tTvSeries = <TvSeries>[tATvSeries];
 
   void _arrangeUsecase() {
-    when(mockGetTVSeriesDetail.execute(tId))
-        .thenAnswer((_) async => Right(testTVSeriesDetailEntity));
-    when(mockGetTVSeriesRecommendations.execute(tId))
-        .thenAnswer((_) async => Right(tTVSeries));
+    when(mockGetTvSeriesDetail.execute(tId))
+        .thenAnswer((_) async => Right(testTvSeriesDetailEntity));
+    when(mockGetTvSeriesRecommendations.execute(tId))
+        .thenAnswer((_) async => Right(tTvSeries));
   }
 
-  group('Get TV Series Detail', () {
+  group('Get Tv Series Detail', () {
     test('should get data from the usecase', () async {
       // arrange
       _arrangeUsecase();
       // act
       await provider.fetchTvSeriesDetail(tId);
       // assert
-      verify(mockGetTVSeriesDetail.execute(tId));
-      verify(mockGetTVSeriesRecommendations.execute(tId));
+      verify(mockGetTvSeriesDetail.execute(tId));
+      verify(mockGetTvSeriesRecommendations.execute(tId));
     });
 
     test('should change state to Loading when usecase is called', () {
@@ -103,19 +103,19 @@ void main() {
       expect(listenerCallCount, 1);
     });
 
-    test('should change TV Series when data is gotten successfully', () async {
+    test('should change Tv Series when data is gotten successfully', () async {
       // arrange
       _arrangeUsecase();
       // act
       await provider.fetchTvSeriesDetail(tId);
       // assert
       expect(provider.tvSeriesState, RequestState.Loaded);
-      expect(provider.tvSeries, testTVSeriesDetailEntity);
+      expect(provider.tvSeries, testTvSeriesDetailEntity);
       expect(listenerCallCount, 3);
     });
 
     test(
-        'should change recommendation TV Series when data is gotten successfully',
+        'should change recommendation Tv Series when data is gotten successfully',
         () async {
       // arrange
       _arrangeUsecase();
@@ -123,19 +123,19 @@ void main() {
       await provider.fetchTvSeriesDetail(tId);
       // assert
       expect(provider.tvSeriesState, RequestState.Loaded);
-      expect(provider.tvSeriesRecommendations, tTVSeries);
+      expect(provider.tvSeriesRecommendations, tTvSeries);
     });
   });
 
-  group('Get TV Series Recommendations', () {
+  group('Get Tv Series Recommendations', () {
     test('should get data from the usecase', () async {
       // arrange
       _arrangeUsecase();
       // act
       await provider.fetchTvSeriesDetail(tId);
       // assert
-      verify(mockGetTVSeriesRecommendations.execute(tId));
-      expect(provider.tvSeriesRecommendations, tTVSeries);
+      verify(mockGetTvSeriesRecommendations.execute(tId));
+      expect(provider.tvSeriesRecommendations, tTvSeries);
     });
 
     test('should update recommendation state when data is gotten successfully',
@@ -146,14 +146,14 @@ void main() {
       await provider.fetchTvSeriesDetail(tId);
       // assert
       expect(provider.recommendationState, RequestState.Loaded);
-      expect(provider.tvSeriesRecommendations, tTVSeries);
+      expect(provider.tvSeriesRecommendations, tTvSeries);
     });
 
     test('should update error message when request in successful', () async {
       // arrange
-      when(mockGetTVSeriesDetail.execute(tId))
-          .thenAnswer((_) async => Right(testTVSeriesDetailEntity));
-      when(mockGetTVSeriesRecommendations.execute(tId))
+      when(mockGetTvSeriesDetail.execute(tId))
+          .thenAnswer((_) async => Right(testTvSeriesDetailEntity));
+      when(mockGetTvSeriesRecommendations.execute(tId))
           .thenAnswer((_) async => Left(ServerFailure('Failed')));
       // act
       await provider.fetchTvSeriesDetail(tId);
@@ -175,38 +175,38 @@ void main() {
 
     test('should execute save watchlist when function called', () async {
       // arrange
-      when(mockSaveWatchlist.execute(testTVSeriesDetailEntity))
+      when(mockSaveWatchlist.execute(testTvSeriesDetailEntity))
           .thenAnswer((_) async => Right('Success'));
-      when(mockGetWatchlistStatus.execute(testTVSeriesDetail.id))
+      when(mockGetWatchlistStatus.execute(testTvSeriesDetail.id))
           .thenAnswer((_) async => true);
       // act
-      await provider.addWatchlist(testTVSeriesDetailEntity);
+      await provider.addWatchlist(testTvSeriesDetailEntity);
       // assert
-      verify(mockSaveWatchlist.execute(testTVSeriesDetailEntity));
+      verify(mockSaveWatchlist.execute(testTvSeriesDetailEntity));
     });
 
     test('should execute remove watchlist when function called', () async {
       // arrange
-      when(mockRemoveWatchlist.execute(testTVSeriesDetailEntity))
+      when(mockRemoveWatchlist.execute(testTvSeriesDetailEntity))
           .thenAnswer((_) async => Right('Removed'));
-      when(mockGetWatchlistStatus.execute(testTVSeriesDetail.id))
+      when(mockGetWatchlistStatus.execute(testTvSeriesDetail.id))
           .thenAnswer((_) async => false);
       // act
-      await provider.removeFromWatchlist(testTVSeriesDetailEntity);
+      await provider.removeFromWatchlist(testTvSeriesDetailEntity);
       // assert
-      verify(mockRemoveWatchlist.execute(testTVSeriesDetailEntity));
+      verify(mockRemoveWatchlist.execute(testTvSeriesDetailEntity));
     });
 
     test('should update watchlist status when add watchlist success', () async {
       // arrange
-      when(mockSaveWatchlist.execute(testTVSeriesDetailEntity))
+      when(mockSaveWatchlist.execute(testTvSeriesDetailEntity))
           .thenAnswer((_) async => Right('Added to Watchlist'));
-      when(mockGetWatchlistStatus.execute(testTVSeriesDetail.id))
+      when(mockGetWatchlistStatus.execute(testTvSeriesDetail.id))
           .thenAnswer((_) async => true);
       // act
-      await provider.addWatchlist(testTVSeriesDetailEntity);
+      await provider.addWatchlist(testTvSeriesDetailEntity);
       // assert
-      verify(mockGetWatchlistStatus.execute(testTVSeriesDetail.id));
+      verify(mockGetWatchlistStatus.execute(testTvSeriesDetail.id));
       expect(provider.isAddedToWatchlist, true);
       expect(provider.watchlistMessage, 'Added to Watchlist');
       expect(listenerCallCount, 1);
@@ -214,12 +214,12 @@ void main() {
 
     test('should update watchlist message when add watchlist failed', () async {
       // arrange
-      when(mockSaveWatchlist.execute(testTVSeriesDetailEntity))
+      when(mockSaveWatchlist.execute(testTvSeriesDetailEntity))
           .thenAnswer((_) async => Left(DatabaseFailure('Failed')));
-      when(mockGetWatchlistStatus.execute(testTVSeriesDetail.id))
+      when(mockGetWatchlistStatus.execute(testTvSeriesDetail.id))
           .thenAnswer((_) async => false);
       // act
-      await provider.addWatchlist(testTVSeriesDetailEntity);
+      await provider.addWatchlist(testTvSeriesDetailEntity);
       // assert
       expect(provider.watchlistMessage, 'Failed');
       expect(listenerCallCount, 1);
@@ -229,10 +229,10 @@ void main() {
   group('on Error', () {
     test('should return error when data is unsuccessful', () async {
       // arrange
-      when(mockGetTVSeriesDetail.execute(tId))
+      when(mockGetTvSeriesDetail.execute(tId))
           .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
-      when(mockGetTVSeriesRecommendations.execute(tId))
-          .thenAnswer((_) async => Right(tTVSeries));
+      when(mockGetTvSeriesRecommendations.execute(tId))
+          .thenAnswer((_) async => Right(tTvSeries));
       // act
       await provider.fetchTvSeriesDetail(tId);
       // assert

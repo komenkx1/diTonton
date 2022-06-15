@@ -12,7 +12,7 @@ abstract class TvSeriesLocalDataSource {
 class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
   final DatabaseHelper databaseHelper;
 
-TvSeriesLocalDataSourceImpl({required this.databaseHelper});
+  TvSeriesLocalDataSourceImpl({required this.databaseHelper});
 
   @override
   Future<String> insertTvSeriesWatchlist(TvSeriesTable tvSeries) async {
@@ -36,7 +36,7 @@ TvSeriesLocalDataSourceImpl({required this.databaseHelper});
 
   @override
   Future<TvSeriesTable?> getTvSeriesById(int id) async {
-    final result = await databaseHelper.getTVSeriesById(id);
+    final result = await databaseHelper.getTvSeriesById(id);
     if (result != null) {
       return TvSeriesTable.fromMap(result);
     } else {

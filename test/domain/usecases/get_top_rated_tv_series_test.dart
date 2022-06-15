@@ -8,22 +8,22 @@ import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late GetTopRatedTvSeries usecase;
-  late MockTvSeriesRepository mockTVSeriesRepository;
+  late MockTvSeriesRepository mockTvSeriesRepository;
 
   setUp(() {
-    mockTVSeriesRepository = MockTvSeriesRepository();
-    usecase = GetTopRatedTvSeries(mockTVSeriesRepository);
+    mockTvSeriesRepository = MockTvSeriesRepository();
+    usecase = GetTopRatedTvSeries(mockTvSeriesRepository);
   });
 
-  final tTVSeries = <TvSeries>[];
+  final tTvSeries = <TvSeries>[];
 
-  test('should get list of TV Series from repository', () async {
+  test('should get list of Tv Series from repository', () async {
     // arrange
-    when(mockTVSeriesRepository.getTopRatedTvSeries())
-        .thenAnswer((_) async => Right(tTVSeries));
+    when(mockTvSeriesRepository.getTopRatedTvSeries())
+        .thenAnswer((_) async => Right(tTvSeries));
     // act
     final result = await usecase.execute();
     // assert
-    expect(result, Right(tTVSeries));
+    expect(result, Right(tTvSeries));
   });
 }

@@ -1,10 +1,8 @@
-
-
 import 'package:ditonton/data/models/tv_series/season_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final tSeasonTVSeriesModel = SeasonModel(
+  final tSeasonTvSeriesModel = SeasonModel(
     id: 1,
     name: 'season',
     posterPath: 'poster',
@@ -14,19 +12,19 @@ void main() {
     overview: '',
   );
 
-  group('Test Model for TV Series Season', () {
-    test('should be a subclass of TV Series Detail entity', () async {
-      final testSeason = tSeasonTVSeriesModel.toEntity();
+  group('Test Model for Tv Series Season', () {
+    test('should be a subclass of Tv Series Detail entity', () async {
+      final testSeason = tSeasonTvSeriesModel.toEntity();
 
-      final result = tSeasonTVSeriesModel.toEntity();
+      final result = tSeasonTvSeriesModel.toEntity();
       expect(result, testSeason);
     });
 
     test('should return a JSON map containing proper data', () async {
       // arrange
-      final testSeasonMap = tSeasonTVSeriesModel.toJson();
+      final testSeasonMap = tSeasonTvSeriesModel.toJson();
       // act
-      final result = tSeasonTVSeriesModel.toJson();
+      final result = tSeasonTvSeriesModel.toJson();
       // assert
       expect(result, testSeasonMap);
     });

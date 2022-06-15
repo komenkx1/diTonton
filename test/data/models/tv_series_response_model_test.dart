@@ -8,7 +8,7 @@ import '../../json_reader.dart';
 import '../../dummy_data/dummy_objects.dart';
 
 void main() {
-  final tTVSeriesModel = TvSeriesModel(
+  final tTvSeriesModel = TvSeriesModel(
     backdropPath: "/1qpUk27LVI9UoTS7S0EixUBj5aR.jpg",
     firstAirDate: "2022-03-24",
     genreIds: [10759, 10765],
@@ -24,8 +24,8 @@ void main() {
     voteAverage: 8.7,
     voteCount: 472,
   );
-  final tTVSeriesResponseModel = TvSeriesResponse(
-      results: <TvSeriesModel>[tTVSeriesModel],
+  final tTvSeriesResponseModel = TvSeriesResponse(
+      results: <TvSeriesModel>[tTvSeriesModel],
       totalResults: 1,
       totalPages: 1,
       page: 1);
@@ -37,7 +37,7 @@ void main() {
       //act
       final result = TvSeriesResponse.fromJson(jsonMap);
       //assert
-      expect(result, tTVSeriesResponseModel);
+      expect(result, tTvSeriesResponseModel);
     });
   });
 
@@ -46,7 +46,7 @@ void main() {
       // arrange
 
       // act
-      final result = testTVSeriesResponse.toJson();
+      final result = testTvSeriesResponse.toJson();
       print(result);
       // assert
       final expectedJsonMap = {

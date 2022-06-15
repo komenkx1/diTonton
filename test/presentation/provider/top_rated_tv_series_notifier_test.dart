@@ -13,21 +13,21 @@ import 'top_rated_tv_series_notifier_test.mocks.dart';
 
 @GenerateMocks([GetTopRatedTvSeries])
 void main() {
-  late MockGetTopRatedTvSeries mockGetTopRatedTVSeries;
+  late MockGetTopRatedTvSeries mockGetTopRatedTvSeries;
   late TopRatedTvSeriesNotifier notifier;
   late int listenerCallCount;
 
   setUp(() {
     listenerCallCount = 0;
-    mockGetTopRatedTVSeries = MockGetTopRatedTvSeries();
+    mockGetTopRatedTvSeries = MockGetTopRatedTvSeries();
     notifier =
-        TopRatedTvSeriesNotifier(getTopRatedTvSeries: mockGetTopRatedTVSeries)
+        TopRatedTvSeriesNotifier(getTopRatedTvSeries: mockGetTopRatedTvSeries)
           ..addListener(() {
             listenerCallCount++;
           });
   });
 
-  final tATVSeries = TvSeries(
+  final tATvSeries = TvSeries(
     backdropPath: 'backdropPath',
     genreIds: [1, 2, 3],
     id: 1,
@@ -43,12 +43,12 @@ void main() {
     originCountry: ['originCountry'],
   );
 
-  final tTVSeriesList = <TvSeries>[tATVSeries];
+  final tTvSeriesList = <TvSeries>[tATvSeries];
 
   test('should change state to loading when usecase is called', () async {
     // arrange
-    when(mockGetTopRatedTVSeries.execute())
-        .thenAnswer((_) async => Right(tTVSeriesList));
+    when(mockGetTopRatedTvSeries.execute())
+        .thenAnswer((_) async => Right(tTvSeriesList));
     // act
     notifier.fetchTopRatedTvSeries();
     // assert
@@ -56,22 +56,22 @@ void main() {
     expect(listenerCallCount, 1);
   });
 
-  test('should change TV Series data when data is gotten successfully',
+  test('should change Tv Series data when data is gotten successfully',
       () async {
     // arrange
-    when(mockGetTopRatedTVSeries.execute())
-        .thenAnswer((_) async => Right(tTVSeriesList));
+    when(mockGetTopRatedTvSeries.execute())
+        .thenAnswer((_) async => Right(tTvSeriesList));
     // act
     await notifier.fetchTopRatedTvSeries();
     // assert
     expect(notifier.state, RequestState.Loaded);
-    expect(notifier.tvSeries, tTVSeriesList);
+    expect(notifier.tvSeries, tTvSeriesList);
     expect(listenerCallCount, 2);
   });
 
   test('should return error when data is unsuccessful', () async {
     // arrange
-    when(mockGetTopRatedTVSeries.execute())
+    when(mockGetTopRatedTvSeries.execute())
         .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
     // act
     await notifier.fetchTopRatedTvSeries();

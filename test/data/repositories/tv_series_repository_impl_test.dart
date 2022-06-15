@@ -27,9 +27,9 @@ void main() {
     );
   });
 
-  final tTvSeriesModel = testTVSeriesModel;
+  final tTvSeriesModel = testTvSeriesModel;
 
-  final tTvSeries = testTVSeries;
+  final tTvSeries = testTvSeries;
 
   final tTvSeriesModelList = <TvSeriesModel>[tTvSeriesModel];
   final tTvSeriesList = <TvSeries>[tTvSeries];

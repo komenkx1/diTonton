@@ -6,7 +6,7 @@ import 'package:ditonton/domain/entities/tv_series/season.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final tTVSeriesDetailResponse = TvSeriesDetailModel(
+  final tTvSeriesDetailResponse = TvSeriesDetailModel(
     adult: false,
     backdropPath: '',
     episodeRunTime: [],
@@ -39,21 +39,21 @@ void main() {
     voteCount: 3,
   );
 
-  group('Test Model for TV Series Detail', () {
-    test('should be a subclass of TV Series Detail entity', () async {
-      final tTVSeriesDetail = tTVSeriesDetailResponse.toEntity();
+  group('Test Model for Tv Series Detail', () {
+    test('should be a subclass of Tv Series Detail entity', () async {
+      final tTvSeriesDetail = tTvSeriesDetailResponse.toEntity();
 
-      final result = tTVSeriesDetailResponse.toEntity();
-      expect(result, tTVSeriesDetail);
+      final result = tTvSeriesDetailResponse.toEntity();
+      expect(result, tTvSeriesDetail);
     });
 
     test('should return a JSON map containing proper data', () async {
       // arrange
-      final tTVSeriesMap = tTVSeriesDetailResponse.toJson();
+      final tTvSeriesMap = tTvSeriesDetailResponse.toJson();
       // act
-      final result = tTVSeriesDetailResponse.toJson();
+      final result = tTvSeriesDetailResponse.toJson();
       // assert
-      expect(result, tTVSeriesMap);
+      expect(result, tTvSeriesMap);
     });
   });
 }

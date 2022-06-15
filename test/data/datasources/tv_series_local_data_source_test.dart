@@ -20,11 +20,11 @@ void main() {
     test('should return success message when insert to database is success',
         () async {
       // arrange
-      when(mockDatabaseHelper.insertTvSeriesWatchlist(testTVSeriesTable))
+      when(mockDatabaseHelper.insertTvSeriesWatchlist(testTvSeriesTable))
           .thenAnswer((_) async => 1);
       // act
       final result =
-          await dataSource.insertTvSeriesWatchlist(testTVSeriesTable);
+          await dataSource.insertTvSeriesWatchlist(testTvSeriesTable);
       // assert
       expect(result, 'Added to Watchlist');
     });
@@ -32,10 +32,10 @@ void main() {
     test('should throw DatabaseException when insert to database is failed',
         () async {
       // arrange
-      when(mockDatabaseHelper.insertTvSeriesWatchlist(testTVSeriesTable))
+      when(mockDatabaseHelper.insertTvSeriesWatchlist(testTvSeriesTable))
           .thenThrow(Exception());
       // act
-      final call = dataSource.insertTvSeriesWatchlist(testTVSeriesTable);
+      final call = dataSource.insertTvSeriesWatchlist(testTvSeriesTable);
       // assert
       expect(() => call, throwsA(isA<DatabaseException>()));
     });
@@ -45,11 +45,11 @@ void main() {
     test('should return success message when remove from database is success',
         () async {
       // arrange
-      when(mockDatabaseHelper.removeTvSeriesWatchlist(testTVSeriesTable))
+      when(mockDatabaseHelper.removeTvSeriesWatchlist(testTvSeriesTable))
           .thenAnswer((_) async => 1);
       // act
       final result =
-          await dataSource.removeTvSeriesWatchlist(testTVSeriesTable);
+          await dataSource.removeTvSeriesWatchlist(testTvSeriesTable);
       // assert
       expect(result, 'Removed from Watchlist');
     });
@@ -57,31 +57,31 @@ void main() {
     test('should throw DatabaseException when remove from database is failed',
         () async {
       // arrange
-      when(mockDatabaseHelper.removeTvSeriesWatchlist(testTVSeriesTable))
+      when(mockDatabaseHelper.removeTvSeriesWatchlist(testTvSeriesTable))
           .thenThrow(Exception());
       // act
-      final call = dataSource.removeTvSeriesWatchlist(testTVSeriesTable);
+      final call = dataSource.removeTvSeriesWatchlist(testTvSeriesTable);
       // assert
       expect(() => call, throwsA(isA<DatabaseException>()));
     });
   });
 
-  group('Get TV Series Detail By Id', () {
+  group('Get Tv Series Detail By Id', () {
     final tId = 1;
 
-    test('should return TV Series Detail Table when data is found', () async {
+    test('should return Tv Series Detail Table when data is found', () async {
       // arrange
-      when(mockDatabaseHelper.getTVSeriesById(tId))
-          .thenAnswer((_) async => testTVSeriesTable.toJson());
+      when(mockDatabaseHelper.getTvSeriesById(tId))
+          .thenAnswer((_) async => testTvSeriesTable.toJson());
       // act
       final result = await dataSource.getTvSeriesById(tId);
       // assert
-      expect(result, testTVSeriesTable);
+      expect(result, testTvSeriesTable);
     });
 
     test('should return null when data is not found', () async {
       // arrange
-      when(mockDatabaseHelper.getTVSeriesById(tId))
+      when(mockDatabaseHelper.getTvSeriesById(tId))
           .thenAnswer((_) async => null);
       // act
       final result = await dataSource.getTvSeriesById(tId);
@@ -90,15 +90,15 @@ void main() {
     });
   });
 
-  group('get watchlist TV Series', () {
-    test('should return list of TV SeriesTable from database', () async {
+  group('get watchlist Tv Series', () {
+    test('should return list of Tv SeriesTable from database', () async {
       // arrange
       when(mockDatabaseHelper.getWatchlistTvSeries())
-          .thenAnswer((_) async => [testTVSeriesTable.toJson()]);
+          .thenAnswer((_) async => [testTvSeriesTable.toJson()]);
       // act
       final result = await dataSource.getWatchlistTvSeries();
       // assert
-      expect(result, [testTVSeriesTable]);
+      expect(result, [testTvSeriesTable]);
     });
   });
 }

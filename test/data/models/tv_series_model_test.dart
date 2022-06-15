@@ -1,10 +1,9 @@
-
 import 'package:ditonton/data/models/tv_series/tv_series_model.dart';
 import 'package:ditonton/domain/entities/tv_series/tv_series.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final tTVSeriesModel = TvSeriesModel(
+  final tTvSeriesModel = TvSeriesModel(
     backdropPath: 'backdropPath',
     genreIds: [1, 2, 3],
     id: 1,
@@ -22,7 +21,7 @@ void main() {
     ],
   );
 
-  final tTVSeries = TvSeries(
+  final tTvSeries = TvSeries(
     backdropPath: 'backdropPath',
     genreIds: [1, 2, 3],
     id: 1,
@@ -38,8 +37,8 @@ void main() {
     originCountry: ['originCountry'],
   );
 
-  test('should be a subclass of TV Series entity', () async {
-    final result = tTVSeriesModel.toEntity();
-    expect(result, tTVSeries);
+  test('should be a subclass of Tv Series entity', () async {
+    final result = tTvSeriesModel.toEntity();
+    expect(result, tTvSeries);
   });
 }

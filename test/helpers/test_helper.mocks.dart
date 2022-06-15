@@ -406,8 +406,8 @@ class MockDatabaseHelper extends _i1.Mock implements _i22.DatabaseHelper {
           Invocation.method(#removeTvSeriesWatchlist, [tvSeries]),
           returnValue: Future<int>.value(0)) as _i7.Future<int>);
   @override
-  _i7.Future<Map<String, dynamic>?> getTVSeriesById(int? id) =>
-      (super.noSuchMethod(Invocation.method(#getTVSeriesById, [id]),
+  _i7.Future<Map<String, dynamic>?> getTvSeriesById(int? id) =>
+      (super.noSuchMethod(Invocation.method(#getTvSeriesById, [id]),
               returnValue: Future<Map<String, dynamic>?>.value())
           as _i7.Future<Map<String, dynamic>?>);
   @override

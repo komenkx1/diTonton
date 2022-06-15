@@ -98,7 +98,7 @@
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            :   @override
 <span class="lineNum">      38 </span><span class="lineCov">          1 :   Future&lt;TvSeriesTable?&gt; getTvSeriesById(int id) async {</span>
-<span class="lineNum">      39 </span><span class="lineCov">          3 :     final result = await databaseHelper.getTVSeriesById(id);</span>
+<span class="lineNum">      39 </span><span class="lineCov">          3 :     final result = await databaseHelper.getTvSeriesById(id);</span>
 <span class="lineNum">      40 </span>            :     if (result != null) {
 <span class="lineNum">      41 </span><span class="lineCov">          1 :       return TvSeriesTable.fromMap(result);</span>
 <span class="lineNum">      42 </span>            :     } else {
