@@ -1,8 +1,6 @@
 import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/data/models/tv_series/season_model.dart';
 import 'package:ditonton/data/models/tv_series/tv_series_detail_model.dart';
-import 'package:ditonton/domain/entities/tv_series/season.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

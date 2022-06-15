@@ -17,7 +17,6 @@ import 'package:mockito/mockito.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper.mocks.dart';
-import 'movie_detail_notifier_test.mocks.dart';
 import 'tv_series_detail_notifier_test.mocks.dart';
 
 @GenerateMocks([
