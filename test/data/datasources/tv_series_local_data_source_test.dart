@@ -66,10 +66,10 @@ void main() {
     });
   });
 
-  group('Get Tv Series Detail By Id', () {
+  group('Get TV Series Detail By Id', () {
     final tId = 1;
 
-    test('should return Tv Series Detail Table when data is found', () async {
+    test('should return TV Series Detail Table when data is found', () async {
       // arrange
       when(mockDatabaseHelper.getTvSeriesById(tId))
           .thenAnswer((_) async => testTvSeriesTable.toJson());
@@ -90,8 +90,8 @@ void main() {
     });
   });
 
-  group('get watchlist Tv Series', () {
-    test('should return list of Tv SeriesTable from database', () async {
+  group('get watchlist TV Series', () {
+    test('should return list of TV SeriesTable from database', () async {
       // arrange
       when(mockDatabaseHelper.getWatchlistTvSeries())
           .thenAnswer((_) async => [testTvSeriesTable.toJson()]);

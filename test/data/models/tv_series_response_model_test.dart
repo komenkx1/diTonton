@@ -8,7 +8,7 @@ import '../../json_reader.dart';
 import '../../dummy_data/dummy_objects.dart';
 
 void main() {
-  final tTvSeriesModel = TvSeriesModel(
+  final tTVSeriesModel = TvSeriesModel(
     backdropPath: "/1qpUk27LVI9UoTS7S0EixUBj5aR.jpg",
     firstAirDate: "2022-03-24",
     genreIds: [10759, 10765],
@@ -24,20 +24,20 @@ void main() {
     voteAverage: 8.7,
     voteCount: 472,
   );
-  final tTvSeriesResponseModel = TvSeriesResponse(
-      results: <TvSeriesModel>[tTvSeriesModel],
-      totalResults: 1,
+  final tTVSeriesResponseModel = TvSeriesResponse(
+      results: <TvSeriesModel>[tTVSeriesModel],
+      page: 1,
       totalPages: 1,
-      page: 1);
+      totalResults: 10);
   group('fromJson', () {
     test('sould return valid model from JSON', () async {
       //arrage
       final Map<String, dynamic> jsonMap =
-          json.decode(readJson('dummy_data/tv_series_on_air.json'));
+          json.decode(readJson('dummy_data/tv_series_on_the_air.json'));
       //act
       final result = TvSeriesResponse.fromJson(jsonMap);
       //assert
-      expect(result, tTvSeriesResponseModel);
+      expect(result, tTVSeriesResponseModel);
     });
   });
 
@@ -47,7 +47,6 @@ void main() {
 
       // act
       final result = testTvSeriesResponse.toJson();
-      print(result);
       // assert
       final expectedJsonMap = {
         "page": 1,
@@ -67,10 +66,10 @@ void main() {
             "poster_path": "/nJUHX3XL1jMkk8honUZnUmudFb9.jpg",
             "vote_average": 8.7,
             "vote_count": 472
-          },
+          }
         ],
         "total_pages": 1,
-        "total_results": 1
+        "total_results": 1,
       };
       expect(result, expectedJsonMap);
     });

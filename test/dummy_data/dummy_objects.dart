@@ -130,7 +130,7 @@ final testTvSeriesTable =
 
 final testTvSeriesTableList = <TvSeriesTable>[testTvSeriesTable];
 
-final testWatchlistTvSeries = [testTvSeriesTable.toEntity()];
+final testWatchlistTVSeries = [testTvSeriesTable.toEntity()];
 
 final testTvSeriesMaping = {
   'id': 1,
@@ -166,7 +166,7 @@ final testTvSeriesDetailEntity = testTvSeriesDetail.toEntity();
 final testTvSeriesMap = testTvSeriesDetail.toJson();
 
 //seasons
-final testSeasonTvSeriesModel = SeasonModel(
+final testSeasonTVSeriesModel = SeasonModel(
   id: 1,
   name: 'season',
   posterPath: 'poster',
@@ -176,6 +176,6 @@ final testSeasonTvSeriesModel = SeasonModel(
   overview: '',
 );
 
-final testSeason = testSeasonTvSeriesModel.toEntity();
+final testSeason = testSeasonTVSeriesModel.toEntity();
 
-final testSeasonMap = testSeasonTvSeriesModel.toJson();
+final testSeasonMap = testSeasonTVSeriesModel.toJson();

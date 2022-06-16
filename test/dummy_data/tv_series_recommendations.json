@@ -2,27 +2,27 @@
     "page": 1,
     "results": [
         {
-            "backdrop_path": "/adZ9ldSlkGfLfsHNbh37ZThCcgU.jpg",
-        "genre_ids": [
-          10751,
-          16,
-          35
-        ],
-        "id": 456,
-        "media_type": "tv",
-        "name": "The Simpsons",
-        "origin_country": [
-          "US"
-        ],
-        "original_language": "en",
-        "original_name": "The Simpsons",
-        "overview": "Set in Springfield, the average American town, the show focuses on the antics and everyday adventures of the Simpson family; Homer, Marge, Bart, Lisa and Maggie, as well as a virtual cast of thousands. Since the beginning, the series has been a pop culture icon, attracting hundreds of celebrities to guest star. The show has also made name for itself in its fearless satirical take on politics, media and American life in general.",
-        "popularity": 542.636,
-        "poster_path": "/tubgEpjTUA7t0kejVMBsNBZDarZ.jpg",
-        "first_air_date": "1989-12-17",
-        "vote_average": 7.904,
-        "vote_count": 7182
-      }
+            "adult": false,
+            "backdrop_path": "/1qpUk27LVI9UoTS7S0EixUBj5aR.jpg",
+            "genre_ids": [
+                10759,
+                10765
+            ],
+            "id": 52814,
+            "media_type": "tv",
+            "name": "Halo",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Halo",
+            "overview": "Depicting an epic 26th-century conflict between humanity and an alien threat known as the Covenant, the series weaves deeply drawn personal stories with action, adventure and a richly imagined vision of the future.",
+            "popularity": 8363.399,
+            "poster_path": "/nJUHX3XL1jMkk8honUZnUmudFb9.jpg",
+            "first_air_date": "2022-03-24",
+            "vote_average": 8.685,
+            "vote_count": 472
+        }
     ],
     "total_pages": 2,
     "total_results": 27

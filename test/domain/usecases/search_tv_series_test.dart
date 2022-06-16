@@ -8,23 +8,23 @@ import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late SearchTvSeries usecase;
-  late MockTvSeriesRepository mockTvSeriesRepository;
+  late MockTvSeriesRepository mockTVSeriesRepository;
 
   setUp(() {
-    mockTvSeriesRepository = MockTvSeriesRepository();
-    usecase = SearchTvSeries(mockTvSeriesRepository);
+    mockTVSeriesRepository = MockTvSeriesRepository();
+    usecase = SearchTvSeries(mockTVSeriesRepository);
   });
 
-  final tTvSeries = <TvSeries>[];
+  final tTVSeries = <TvSeries>[];
   final tQuery = 'Spiderman';
 
   test('should get list of movies from the repository', () async {
     // arrange
-    when(mockTvSeriesRepository.searchTvSeries(tQuery))
-        .thenAnswer((_) async => Right(tTvSeries));
+    when(mockTVSeriesRepository.searchTvSeries(tQuery))
+        .thenAnswer((_) async => Right(tTVSeries));
     // act
     final result = await usecase.execute(tQuery);
     // assert
-    expect(result, Right(tTvSeries));
+    expect(result, Right(tTVSeries));
   });
 }
