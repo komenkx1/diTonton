@@ -1,4 +1,5 @@
 import 'package:ditonton/common/constants.dart';
+import 'package:ditonton/common/http_ssl_pinning.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_page.dart';
@@ -26,13 +27,17 @@ import 'package:ditonton/presentation/bloc/tv_series/bloc/detail_tv_series_bloc.
 import 'package:ditonton/presentation/bloc/tv_series/bloc/recommendation_tv_series_bloc.dart';
 
 import 'package:ditonton/presentation/bloc/home_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
-void main() {
+void main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+  await HttpSSLPinning.init();
+  await Firebase.initializeApp();
   di.init();
   runApp(MyApp());
 }

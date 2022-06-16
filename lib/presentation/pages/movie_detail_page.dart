@@ -5,7 +5,6 @@ import 'package:ditonton/domain/entities/movie/movie_detail.dart';
 import 'package:ditonton/presentation/bloc/movie/bloc/detail_movie_bloc.dart';
 import 'package:ditonton/presentation/bloc/movie/bloc/recommendation_movies_bloc.dart';
 import 'package:ditonton/presentation/bloc/movie/bloc/watchlist_movie_bloc.dart';
-import 'package:ditonton/presentation/pages/watchlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -150,13 +149,6 @@ class DetailContent extends StatelessWidget {
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(SnackBar(
                                     content: Text(message),
-                                    action: SnackBarAction(
-                                      label: 'See Watchlist',
-                                      onPressed: () {
-                                        Navigator.pushNamed(context,
-                                            WatchlistMoviesPage.ROUTE_NAME);
-                                      },
-                                    ),
                                   ));
                                 } else {
                                   showDialog(

@@ -16,7 +16,6 @@ class DetailMovieBloc extends Bloc<DetailMovieEvent, DetailMovieState> {
 
         emit(DetailMovieLoading());
         final result = await _getMovieDetail.execute(id);
-
         result.fold(
           (failure) {
             emit(DetailMovieError(failure.message));

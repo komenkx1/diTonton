@@ -156,13 +156,6 @@ class DetailContent extends StatelessWidget {
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(SnackBar(
                                     content: Text(message),
-                                    action: SnackBarAction(
-                                      label: 'See Watchlist',
-                                      onPressed: () {
-                                        Navigator.pushNamed(context,
-                                            WatchlistMoviesPage.ROUTE_NAME);
-                                      },
-                                    ),
                                   ));
                                 } else {
                                   showDialog(

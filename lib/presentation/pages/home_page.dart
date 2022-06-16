@@ -6,6 +6,7 @@ import 'package:ditonton/presentation/pages/screens/home_movie_screen.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/screens/tv_series_screen.dart';
 import 'package:ditonton/presentation/pages/watchlist_page.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,6 +54,7 @@ class _HomePageState extends State<HomePage> {
                   leading: Icon(Icons.tv),
                   title: Text('Tv Series'),
                   onTap: () {
+                    // FirebaseCrashlytics.instance.crash();
                     context.read<HomeBloc>().add(OnPageChanged(1));
                     Navigator.pop(context);
                     // Navigator.pushNamed(context, TvSeriesScreen.ROUTE_NAME);
