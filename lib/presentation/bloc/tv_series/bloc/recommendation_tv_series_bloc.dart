@@ -12,7 +12,7 @@ class RecommendationTvSeriesBloc
 
   RecommendationTvSeriesBloc(this._getTvSeriesRecommendations)
       : super(RecommendationTvSeriesEmpty()) {
-    on<RecommendationTvSeriesAppellation>(
+    on<RecommendationTvSeriesLoad>(
       (event, emit) async {
         final id = event.id;
         emit(RecommendationTvSeriesLoading());

@@ -30,14 +30,14 @@ void main() {
             .thenAnswer((_) async => Right(testTvSeriesList));
         return topRatedTVSeriesBloc;
       },
-      act: (bloc) => bloc.add(TopRatedTvSeriesAppellation()),
+      act: (bloc) => bloc.add(TopRatedTvSeriesLoad()),
       expect: () => [
         TopRatedTvSeriesLoading(),
         TopRatedTvSeriesHasData(testTvSeriesList),
       ],
       verify: (bloc) {
         verify(mockGetTopRatedTVSeries.execute());
-        return TopRatedTvSeriesAppellation().props;
+        return TopRatedTvSeriesLoad().props;
       },
     );
 
@@ -48,7 +48,7 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return topRatedTVSeriesBloc;
       },
-      act: (bloc) => bloc.add(TopRatedTvSeriesAppellation()),
+      act: (bloc) => bloc.add(TopRatedTvSeriesLoad()),
       expect: () => [
         TopRatedTvSeriesLoading(),
         TopRatedTvSeriesError('Server Failure'),

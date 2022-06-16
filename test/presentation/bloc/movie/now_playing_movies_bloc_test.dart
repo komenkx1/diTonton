@@ -8,7 +8,6 @@ import 'package:mockito/mockito.dart';
 import '../../../dummy_data/dummy_objects.dart';
 import '../../../helpers/movie/movie_list_notifier_test.mocks.dart';
 
-
 void main() {
   late NowPlayingMoviesBloc nowPlayingMoviesBloc;
   late MockGetNowPlayingMovies mockGetNowPlayingMovies;
@@ -30,14 +29,14 @@ void main() {
             .thenAnswer((_) async => Right(testMovieList));
         return nowPlayingMoviesBloc;
       },
-      act: (bloc) => bloc.add(OnNowPlayingMoviesAppellation()),
+      act: (bloc) => bloc.add(OnNowPlayingMoviesLoad()),
       expect: () => [
         NowPlayingMoviesLoading(),
         NowPlayingMoviesHasData(testMovieList),
       ],
       verify: (bloc) {
         verify(mockGetNowPlayingMovies.execute());
-        return OnNowPlayingMoviesAppellation().props;
+        return OnNowPlayingMoviesLoad().props;
       },
     );
 
@@ -48,7 +47,7 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return nowPlayingMoviesBloc;
       },
-      act: (bloc) => bloc.add(OnNowPlayingMoviesAppellation()),
+      act: (bloc) => bloc.add(OnNowPlayingMoviesLoad()),
       expect: () => [
         NowPlayingMoviesLoading(),
         NowPlayingMoviesError('Server Failure'),

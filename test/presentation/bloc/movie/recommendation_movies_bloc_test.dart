@@ -10,7 +10,6 @@ import 'package:mockito/mockito.dart';
 import '../../../dummy_data/dummy_objects.dart';
 import '../../../helpers/movie/movie_detail_notifier_test.mocks.dart';
 
-
 void main() {
   late RecommendationMoviesBloc recommendationMoviesBloc;
   late MockGetMovieRecommendations mockGetRecommendationMovies;
@@ -35,14 +34,14 @@ void main() {
             .thenAnswer((_) async => Right(testMovieList));
         return recommendationMoviesBloc;
       },
-      act: (bloc) => bloc.add(RecommendationMoviesAppellation(tId)),
+      act: (bloc) => bloc.add(RecommendationMoviesLoad(tId)),
       expect: () => [
         RecommendationMoviesLoading(),
         RecommendationMoviesHasData(testMovieList),
       ],
       verify: (bloc) {
         verify(mockGetRecommendationMovies.execute(tId));
-        return RecommendationMoviesAppellation(tId).props;
+        return RecommendationMoviesLoad(tId).props;
       },
     );
 
@@ -53,7 +52,7 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return recommendationMoviesBloc;
       },
-      act: (bloc) => bloc.add(RecommendationMoviesAppellation(tId)),
+      act: (bloc) => bloc.add(RecommendationMoviesLoad(tId)),
       expect: () => [
         RecommendationMoviesLoading(),
         RecommendationMoviesError('Server Failure'),

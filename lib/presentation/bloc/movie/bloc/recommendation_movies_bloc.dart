@@ -12,7 +12,7 @@ class RecommendationMoviesBloc
 
   RecommendationMoviesBloc(this._getMovieRecommendations)
       : super(RecommendationMoviesEmpty()) {
-    on<RecommendationMoviesAppellation>(
+    on<RecommendationMoviesLoad>(
       (event, emit) async {
         final id = event.id;
         emit(RecommendationMoviesLoading());

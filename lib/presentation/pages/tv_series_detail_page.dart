@@ -5,7 +5,6 @@ import 'package:ditonton/domain/entities/tv_series/tv_series_detail.dart';
 import 'package:ditonton/presentation/bloc/tv_series/bloc/detail_tv_series_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv_series/bloc/recommendation_tv_series_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv_series/bloc/watchlist_tv_series_bloc.dart';
-import 'package:ditonton/presentation/pages/watchlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -25,12 +24,10 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      context
-          .read<DetailTvSeriesBloc>()
-          .add(DetailTvSeriesAppellation(widget.id));
+      context.read<DetailTvSeriesBloc>().add(DetailTvSeriesLoad(widget.id));
       context
           .read<RecommendationTvSeriesBloc>()
-          .add(RecommendationTvSeriesAppellation(widget.id));
+          .add(RecommendationTvSeriesLoad(widget.id));
       context
           .read<WatchlistTvSeriesBloc>()
           .add(GotWatchlistTvSeries(widget.id));

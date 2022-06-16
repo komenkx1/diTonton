@@ -12,7 +12,7 @@ class PopularTvSeriesBloc
 
   PopularTvSeriesBloc(this._getPopularTvSeries)
       : super(PopularTvSeriesEmpty()) {
-    on<PopularTvSeriesAppellation>(
+    on<PopularTvSeriesLoad>(
       (event, emit) async {
         emit(PopularTvSeriesLoading());
 

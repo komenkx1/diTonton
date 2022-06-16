@@ -4,7 +4,7 @@ abstract class TopRatedTvSeriesEvent extends Equatable {
   const TopRatedTvSeriesEvent();
 }
 
-class TopRatedTvSeriesAppellation extends TopRatedTvSeriesEvent {
+class TopRatedTvSeriesLoad extends TopRatedTvSeriesEvent {
   @override
   List<Object> get props => [];
 }

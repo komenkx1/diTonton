@@ -4,10 +4,10 @@ abstract class RecommendationMoviesEvent extends Equatable {
   const RecommendationMoviesEvent();
 }
 
-class RecommendationMoviesAppellation extends RecommendationMoviesEvent {
+class RecommendationMoviesLoad extends RecommendationMoviesEvent {
   final int id;
 
-  RecommendationMoviesAppellation(this.id);
+  RecommendationMoviesLoad(this.id);
 
   @override
   List<Object> get props => [];

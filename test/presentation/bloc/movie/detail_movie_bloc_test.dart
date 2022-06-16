@@ -8,7 +8,6 @@ import 'package:mockito/mockito.dart';
 import '../../../dummy_data/dummy_objects.dart';
 import '../../../helpers/movie/movie_detail_notifier_test.mocks.dart';
 
-
 void main() {
   late DetailMovieBloc detailMovieBloc;
   late MockGetMovieDetail mockGetMovieDetail;
@@ -32,14 +31,14 @@ void main() {
             .thenAnswer((_) async => Right(testMovieDetail));
         return detailMovieBloc;
       },
-      act: (bloc) => bloc.add(DetailMovieAppellation(tId)),
+      act: (bloc) => bloc.add(DetailMovieLoad(tId)),
       expect: () => [
         DetailMovieLoading(),
         DetailMovieHasData(testMovieDetail),
       ],
       verify: (bloc) {
         verify(mockGetMovieDetail.execute(tId));
-        return DetailMovieAppellation(tId).props;
+        return DetailMovieLoad(tId).props;
       },
     );
 
@@ -50,7 +49,7 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return detailMovieBloc;
       },
-      act: (bloc) => bloc.add(DetailMovieAppellation(tId)),
+      act: (bloc) => bloc.add(DetailMovieLoad(tId)),
       expect: () => [
         DetailMovieLoading(),
         DetailMovieError('Server Failure'),

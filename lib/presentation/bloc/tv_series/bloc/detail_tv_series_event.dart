@@ -4,10 +4,10 @@ abstract class DetailTvSeriesEvent extends Equatable {
   const DetailTvSeriesEvent();
 }
 
-class DetailTvSeriesAppellation extends DetailTvSeriesEvent {
+class DetailTvSeriesLoad extends DetailTvSeriesEvent {
   final int id;
 
-  DetailTvSeriesAppellation(this.id);
+  DetailTvSeriesLoad(this.id);
 
   @override
   List<Object> get props => [];

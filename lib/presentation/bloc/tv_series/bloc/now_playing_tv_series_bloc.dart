@@ -12,7 +12,7 @@ class NowPlayingTvSeriesBloc
 
   NowPlayingTvSeriesBloc(this._getOnTheAirTvSeries)
       : super(NowPlayingTvSeriesEmpty()) {
-    on<NowPlayingTvSeriesAppellation>(
+    on<NowPlayingTvSeriesLoad>(
       (event, emit) async {
         emit(NowPlayingTvSeriesLoading());
 

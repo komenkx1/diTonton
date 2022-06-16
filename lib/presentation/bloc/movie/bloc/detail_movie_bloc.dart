@@ -10,7 +10,7 @@ class DetailMovieBloc extends Bloc<DetailMovieEvent, DetailMovieState> {
   final GetMovieDetail _getMovieDetail;
 
   DetailMovieBloc(this._getMovieDetail) : super(DetailMovieEmpty()) {
-    on<DetailMovieAppellation>(
+    on<DetailMovieLoad>(
       (event, emit) async {
         final id = event.id;
 

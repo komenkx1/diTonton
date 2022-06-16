@@ -11,7 +11,7 @@ class DetailTvSeriesBloc
   final GetTvSeriesDetail _getTvSeriesDetail;
 
   DetailTvSeriesBloc(this._getTvSeriesDetail) : super(DetailTvSeriesEmpty()) {
-    on<DetailTvSeriesAppellation>(
+    on<DetailTvSeriesLoad>(
       (event, emit) async {
         final id = event.id;
 

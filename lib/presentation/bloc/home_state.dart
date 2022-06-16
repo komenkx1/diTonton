@@ -20,6 +20,7 @@ class HomeError extends HomeState {
   List<Object> get props => [message];
 }
 
+// ignore: must_be_immutable
 class HomeHasData extends HomeState {
   int index = 0;
 

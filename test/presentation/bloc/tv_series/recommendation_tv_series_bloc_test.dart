@@ -34,14 +34,14 @@ void main() {
             .thenAnswer((_) async => Right(testTvSeriesList));
         return recommendationTVSeriesBloc;
       },
-      act: (bloc) => bloc.add(RecommendationTvSeriesAppellation(tId)),
+      act: (bloc) => bloc.add(RecommendationTvSeriesLoad(tId)),
       expect: () => [
         RecommendationTvSeriesLoading(),
         RecommendationTvSeriesHasData(testTvSeriesList),
       ],
       verify: (bloc) {
         verify(mockGetRecommendationTVSeries.execute(tId));
-        return RecommendationTvSeriesAppellation(tId).props;
+        return RecommendationTvSeriesLoad(tId).props;
       },
     );
 
@@ -52,7 +52,7 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return recommendationTVSeriesBloc;
       },
-      act: (bloc) => bloc.add(RecommendationTvSeriesAppellation(tId)),
+      act: (bloc) => bloc.add(RecommendationTvSeriesLoad(tId)),
       expect: () => [
         RecommendationTvSeriesLoading(),
         RecommendationTvSeriesError('Server Failure'),

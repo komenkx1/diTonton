@@ -10,7 +10,6 @@ import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class HomeMovieScreen extends StatefulWidget {
   @override
   _HomeMovieScreenState createState() => _HomeMovieScreenState();
@@ -21,9 +20,9 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      context.read<NowPlayingMoviesBloc>().add(OnNowPlayingMoviesAppellation());
-      context.read<PopularMoviesBloc>().add(PopularMoviesAppellation());
-      context.read<TopRatedMoviesBloc>().add(TopRatedMoviesAppellation());
+      context.read<NowPlayingMoviesBloc>().add(OnNowPlayingMoviesLoad());
+      context.read<PopularMoviesBloc>().add(PopularMoviesLoad());
+      context.read<TopRatedMoviesBloc>().add(TopRatedMoviesLoad());
     });
   }
 

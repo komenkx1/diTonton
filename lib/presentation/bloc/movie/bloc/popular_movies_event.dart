@@ -4,7 +4,7 @@ abstract class PopularMoviesEvent extends Equatable {
   const PopularMoviesEvent();
 }
 
-class PopularMoviesAppellation extends PopularMoviesEvent {
+class PopularMoviesLoad extends PopularMoviesEvent {
   @override
   List<Object?> get props => [];
 }

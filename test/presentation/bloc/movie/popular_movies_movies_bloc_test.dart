@@ -9,7 +9,6 @@ import 'package:mockito/mockito.dart';
 import '../../../dummy_data/dummy_objects.dart';
 import '../../../helpers/movie/movie_list_notifier_test.mocks.dart';
 
-
 void main() {
   late PopularMoviesBloc popularMoviesBloc;
   late MockGetPopularMovies mockGetPopularMovies;
@@ -31,14 +30,14 @@ void main() {
             .thenAnswer((_) async => Right(testMovieList));
         return popularMoviesBloc;
       },
-      act: (bloc) => bloc.add(PopularMoviesAppellation()),
+      act: (bloc) => bloc.add(PopularMoviesLoad()),
       expect: () => [
         PopularMoviesLoading(),
         PopularMoviesHasData(testMovieList),
       ],
       verify: (bloc) {
         verify(mockGetPopularMovies.execute());
-        return PopularMoviesAppellation().props;
+        return PopularMoviesLoad().props;
       },
     );
 
@@ -49,7 +48,7 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return popularMoviesBloc;
       },
-      act: (bloc) => bloc.add(PopularMoviesAppellation()),
+      act: (bloc) => bloc.add(PopularMoviesLoad()),
       expect: () => [
         PopularMoviesLoading(),
         PopularMoviesError('Server Failure'),

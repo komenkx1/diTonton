@@ -12,7 +12,7 @@ class TopRatedTvSeriesBloc
 
   TopRatedTvSeriesBloc(this._getTopRatedTvSeries)
       : super(TopRatedTvSeriesEmpty()) {
-    on<TopRatedTvSeriesAppellation>(
+    on<TopRatedTvSeriesLoad>(
       (event, emit) async {
         emit(TopRatedTvSeriesLoading());
 

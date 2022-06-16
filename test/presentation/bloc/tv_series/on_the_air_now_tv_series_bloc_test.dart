@@ -29,14 +29,14 @@ void main() {
             .thenAnswer((_) async => Right(testTvSeriesList));
         return nowPlayingTVSeriesBloc;
       },
-      act: (bloc) => bloc.add(NowPlayingTvSeriesAppellation()),
+      act: (bloc) => bloc.add(NowPlayingTvSeriesLoad()),
       expect: () => [
         NowPlayingTvSeriesLoading(),
         NowPlayingTvSeriesHasData(testTvSeriesList),
       ],
       verify: (bloc) {
         verify(mockGetNowPlayingTVSeries.execute());
-        return NowPlayingTvSeriesAppellation().props;
+        return NowPlayingTvSeriesLoad().props;
       },
     );
 
@@ -47,7 +47,7 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return nowPlayingTVSeriesBloc;
       },
-      act: (bloc) => bloc.add(NowPlayingTvSeriesAppellation()),
+      act: (bloc) => bloc.add(NowPlayingTvSeriesLoad()),
       expect: () => [
         NowPlayingTvSeriesLoading(),
         NowPlayingTvSeriesError('Server Failure'),

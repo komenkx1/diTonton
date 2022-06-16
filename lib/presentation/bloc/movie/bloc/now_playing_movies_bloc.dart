@@ -13,7 +13,7 @@ class NowPlayingMoviesBloc
   NowPlayingMoviesBloc(
     this._getNowPlayingMovies,
   ) : super(NowPlayingMoviesEmpty()) {
-    on<OnNowPlayingMoviesAppellation>(
+    on<OnNowPlayingMoviesLoad>(
       (event, emit) async {
         emit(NowPlayingMoviesLoading());
 

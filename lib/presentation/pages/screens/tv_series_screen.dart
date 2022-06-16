@@ -20,11 +20,9 @@ class _TvSeriesScreenState extends State<TvSeriesScreen> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      context
-          .read<NowPlayingTvSeriesBloc>()
-          .add(NowPlayingTvSeriesAppellation());
-      context.read<PopularTvSeriesBloc>().add(PopularTvSeriesAppellation());
-      context.read<TopRatedTvSeriesBloc>().add(TopRatedTvSeriesAppellation());
+      context.read<NowPlayingTvSeriesBloc>().add(NowPlayingTvSeriesLoad());
+      context.read<PopularTvSeriesBloc>().add(PopularTvSeriesLoad());
+      context.read<TopRatedTvSeriesBloc>().add(TopRatedTvSeriesLoad());
     });
   }
 
