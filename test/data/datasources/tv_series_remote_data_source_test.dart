@@ -24,7 +24,7 @@ void main() {
 
   group('get Now Playing TV Series', () {
     final testTvShowList = TvSeriesResponse.fromJson(
-            json.decode(readJson('dummy_data/tv_series_on_the_air.json')))
+            json.decode(readJson('dummy_data/now_playing_tv_series.json')))
         .results;
 
     test('should return list of TVShow Model when the response code is 200',
@@ -32,7 +32,7 @@ void main() {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
           .thenAnswer((_) async => http.Response(
-                  readJson('dummy_data/tv_series_on_the_air.json'), 200,
+                  readJson('dummy_data/now_playing_tv_series.json'), 200,
                   headers: {
                     HttpHeaders.contentTypeHeader:
                         'application/json; charset=utf-8',
